@@ -4,42 +4,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6254dc">
 <title>Eduverse | Öğrenmenin Yeni Evreni</title>
 
 <style>
+:root {
+    --primary: #6254dc;
+    --secondary: #8978f5;
+    --dark: #18213b;
+    --background: #f5f7ff;
+    --white: #ffffff;
+    --muted: #737b94;
+    --border: #e8e9f4;
+    --success: #16875d;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #f5f7ff;
-    color: #18213b;
+    background: var(--background);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 header {
     background: white;
-    padding: 20px 7%;
+    padding: 17px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 12px #0000000c;
+    gap: 20px;
     flex-wrap: wrap;
-    gap: 15px;
+    box-shadow: 0 2px 12px #0000000c;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
     font-size: 27px;
-    font-weight: bold;
-    color: #6254dc;
+    font-weight: 800;
+    color: var(--primary);
+    cursor: pointer;
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -47,175 +76,314 @@ nav a {
     text-decoration: none;
     color: #39415c;
     font-weight: bold;
+    font-size: 14px;
 }
 
-.login-link {
-    color: #6254dc;
-    border: 2px solid #6254dc;
+nav a:hover {
+    color: var(--primary);
+}
+
+.nav-button {
+    background: var(--primary);
+    color: white;
     padding: 10px 16px;
     border-radius: 9px;
 }
 
-.register-link {
-    background: #6254dc;
+.hero {
+    padding: 95px 8%;
+    text-align: center;
     color: white;
-    padding: 12px 17px;
-    border-radius: 9px;
+    background: linear-gradient(135deg, #6254dc, #8978f5);
 }
 
-.hero {
-    padding: 90px 8%;
-    text-align: center;
-    background: linear-gradient(135deg, #6254dc, #8978f5);
-    color: white;
+.hero .tag {
+    display: inline-block;
+    background: #ffffff25;
+    padding: 7px 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: 46px;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.2;
     margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 19px;
-    margin-bottom: 30px;
-    line-height: 1.6;
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto 28px;
 }
 
-.hero button,
 .primary-button {
     background: white;
-    color: #6254dc;
+    color: var(--primary);
     border: none;
-    padding: 15px 30px;
+    padding: 14px 25px;
     border-radius: 10px;
-    font-size: 17px;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.courses {
-    padding: 55px 8%;
+.primary-button:hover {
+    transform: translateY(-2px);
+}
+
+.section {
+    padding: 60px 8%;
+}
+
+.section-heading {
     text-align: center;
+    margin-bottom: 35px;
 }
 
-.courses h2 {
+.section-heading h2 {
     font-size: 32px;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
 }
 
-.course-container {
+.section-heading p {
+    color: var(--muted);
+}
+
+.feature-grid,
+.subject-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 20px;
 }
 
-.course {
+.feature-card,
+.subject-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 25px;
+    box-shadow: 0 4px 15px #00000008;
+}
+
+.feature-card h3,
+.subject-card h3 {
+    color: var(--primary);
+    margin: 8px 0;
+}
+
+.subject-card {
+    cursor: pointer;
+    text-align: left;
+    transition: .2s;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+}
+
+.subject-icon {
+    font-size: 38px;
+}
+
+.subject-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.subject-card button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 16px;
+}
+
+.progress-box {
+    background: white;
+    padding: 23px;
+    border-radius: 15px;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+}
+
+.progress-track {
+    height: 12px;
+    background: #ecebfa;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #6254dc, #a18dfb);
+    transition: width .3s;
+}
+
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.toolbar input {
+    flex: 1;
+    min-width: 200px;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+}
+
+.lesson-list {
+    display: grid;
+    gap: 15px;
+}
+
+.lesson-item {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.lesson-item h3 {
+    color: var(--primary);
+}
+
+.lesson-item p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.lesson-item button,
+.back-button,
+.action-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.back-button {
+    margin-bottom: 20px;
+    background: #eae8ff;
+    color: var(--primary);
+}
+
+.lesson-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.lesson-panel {
     background: white;
     padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px #0000000b;
-    transition: 0.2s;
+    border-radius: 17px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
 }
 
-.course:hover {
-    transform: translateY(-5px);
+.lesson-panel h2 {
+    color: var(--primary);
+    margin-bottom: 18px;
 }
 
-.course h3 {
-    color: #6254dc;
+.lesson-panel h3 {
+    margin: 22px 0 8px;
+}
+
+.lesson-panel p {
     margin-bottom: 12px;
 }
 
-.course p {
-    line-height: 1.5;
+.example-box {
+    background: #f0efff;
+    border-left: 4px solid var(--primary);
+    padding: 17px;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+.quiz-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.quiz-question {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.quiz-option {
+    display: block;
+    background: #f5f4ff;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 13px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    border-color: var(--secondary);
+}
+
+.quiz-option input {
+    margin-right: 10px;
+}
+
+.quiz-result {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.completed {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 35px;
+    color: var(--muted);
+    background: white;
+    border-radius: 12px;
 }
 
 .about {
-    padding: 55px 8%;
+    background: white;
     text-align: center;
-    line-height: 1.7;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--muted);
 }
 
 footer {
-    background: #18213b;
+    background: var(--dark);
     color: white;
     text-align: center;
-    padding: 25px;
-    margin-top: 40px;
+    padding: 30px;
 }
 
-/* Giriş ve kayıt ekranları */
-
-.auth-section {
-    display: none;
-    min-height: 70vh;
-    padding: 60px 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.auth-box {
-    background: white;
-    width: 100%;
-    max-width: 420px;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 5px 25px #00000012;
-}
-
-.auth-box h2 {
-    color: #6254dc;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.auth-box input,
-.auth-box select {
-    width: 100%;
-    padding: 13px;
-    margin-bottom: 15px;
-    border: 1px solid #d9dcef;
-    border-radius: 9px;
-    font-size: 15px;
-}
-
-.auth-box button {
-    width: 100%;
-    padding: 14px;
-    background: #6254dc;
-    color: white;
-    border: none;
-    border-radius: 9px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.auth-box p {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 14px;
-}
-
-.auth-box a {
-    color: #6254dc;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.back-home {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #6254dc;
-    cursor: pointer;
-}
-
-.message {
-    text-align: center;
-    margin-top: 12px;
-    color: #6254dc;
-    font-size: 14px;
+.hidden {
+    display: none !important;
 }
 
 @media(max-width: 650px) {
@@ -225,14 +393,19 @@ footer {
 
     nav {
         justify-content: center;
+        gap: 12px;
     }
 
-    .hero h1 {
-        font-size: 32px;
+    .section {
+        padding: 45px 6%;
     }
 
     .hero {
         padding: 65px 6%;
+    }
+
+    .lesson-panel {
+        padding: 20px;
     }
 }
 </style>
@@ -241,168 +414,623 @@ footer {
 <body>
 
 <header>
-    <div class="logo">Eduverse</div>
+    <div class="logo" onclick="goHome()">Eduverse.</div>
 
     <nav>
-        <a href="#" onclick="showHome()">Ana Sayfa</a>
-        <a href="#dersler" onclick="showHome()">Dersler</a>
-        <a href="#hakkinda" onclick="showHome()">Hakkımızda</a>
-        <a href="#giris" class="login-link" onclick="showLogin()">Giriş Yap</a>
-        <a href="#kayit" class="register-link" onclick="showRegister()">Kayıt Ol</a>
+        <a href="#" onclick="goHome()">Ana Sayfa</a>
+        <a href="#egitim" onclick="goHome()">Eğitim</a>
+        <a href="#hakkinda" onclick="goHome()">Hakkımızda</a>
+        <a href="#egitim" class="nav-button" onclick="goHome()">Derslere Başla</a>
     </nav>
 </header>
 
 <main id="home">
 
     <section class="hero">
+        <div class="tag">🌟 Yeni nesil eğitim platformu</div>
+
         <h1>Öğrenmenin Yeni Evrenine Hoş Geldin!</h1>
+
         <p>
-            Keşfet, öğren, kendini geliştir.<br>
+            Keşfet, öğren, dene ve kendini geliştir.
             Geleceğini Eduverse ile şekillendir.
         </p>
 
-        <button onclick="document.getElementById('dersler').scrollIntoView({behavior:'smooth'})">
-            Dersleri Keşfet
+        <button class="primary-button"
+            onclick="openEducation()">
+            Öğrenmeye Başla →
         </button>
     </section>
 
-    <section class="courses" id="dersler">
-        <h2>Eğitim Dünyası</h2>
+    <section class="section">
+        <div class="section-heading">
+            <h2>Neden Eduverse?</h2>
+            <p>Öğrenmeyi daha eğlenceli ve anlaşılır hâle getiriyoruz.</p>
+        </div>
 
-        <div class="course-container">
-
-            <div class="course">
-                <h3>📚 İlkokul</h3>
-                <p>1, 2, 3 ve 4. sınıf dersleri</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="subject-icon">📚</div>
+                <h3>Konu Anlatımları</h3>
+                <p>Konuları basit ve anlaşılır şekilde öğren.</p>
             </div>
 
-            <div class="course">
-                <h3>🎓 Ortaokul</h3>
-                <p>5, 6, 7 ve 8. sınıf dersleri</p>
+            <div class="feature-card">
+                <div class="subject-icon">🧠</div>
+                <h3>Mini Testler</h3>
+                <p>Öğrendiklerini sorularla kontrol et.</p>
             </div>
 
-            <div class="course">
-                <h3>🚀 Lise</h3>
-                <p>9, 10, 11 ve 12. sınıf dersleri</p>
+            <div class="feature-card">
+                <div class="subject-icon">📈</div>
+                <h3>İlerleme Takibi</h3>
+                <p>Tamamladığın konuları takip et.</p>
             </div>
 
-            <div class="course">
-                <h3>🌍 Genel Eğitim</h3>
-                <p>Yeni bilgiler ve farklı alanlar</p>
+            <div class="feature-card">
+                <div class="subject-icon">🌍</div>
+                <h3>Yeni Bilgiler</h3>
+                <p>Her gün yeni şeyler keşfet.</p>
             </div>
-
         </div>
     </section>
 
-    <section class="about" id="hakkinda">
-        <h2>Eduverse Nedir?</h2>
+    <section class="section" id="egitim">
+        <div class="section-heading">
+            <h2>📚 Eğitim Merkezi</h2>
+            <p>Şimdilik 1. sınıf dersleriyle başlıyoruz.</p>
+        </div>
+
+        <div class="progress-box">
+            <strong>🌟 Öğrenme İlerlemen</strong>
+            <p id="progressText">Henüz konu tamamlamadın.</p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="subjectScreen">
+            <div class="toolbar">
+                <input id="searchInput"
+                    type="search"
+                    placeholder="Ders veya konu ara..."
+                    oninput="renderSubjects()">
+            </div>
+
+            <div class="subject-grid" id="subjectContainer"></div>
+        </div>
+
+        <div id="topicScreen" class="hidden">
+            <button class="back-button" onclick="showSubjects()">
+                ← Derslere Dön
+            </button>
+            <div class="section-heading">
+                <h2 id="topicTitle"></h2>
+                <p id="topicDescription"></p>
+            </div>
+            <div class="lesson-list" id="topicContainer"></div>
+        </div>
+
+        <div id="lessonScreen" class="hidden">
+            <button class="back-button" onclick="backToTopics()">
+                ← Konulara Dön
+            </button>
+            <div class="lesson-content" id="lessonContent"></div>
+        </div>
+    </section>
+
+    <section class="section about" id="hakkinda">
+        <div class="section-heading">
+            <h2>Eduverse Nedir?</h2>
+        </div>
         <p>
-            Eduverse, herkesin istediği zaman ve yerde
-            öğrenebilmesi için tasarlanan modern bir eğitim platformudur.
+            Eduverse, öğrencilerin dersleri keşfedebileceği,
+            konu anlatımlarını okuyabileceği ve öğrendiklerini
+            mini testlerle pekiştirebileceği bir eğitim platformudur.
+            Amacımız öğrenmeyi herkes için daha erişilebilir ve eğlenceli
+            hâle getirmektir.
         </p>
     </section>
 
 </main>
 
-<!-- GİRİŞ EKRANI -->
-
-<section class="auth-section" id="loginSection">
-    <div class="auth-box">
-        <h2>Eduverse'e Giriş Yap</h2>
-
-        <form onsubmit="demoLogin(event)">
-            <input type="email" placeholder="E-posta adresin" required>
-            <input type="password" placeholder="Şifren" required>
-            <button type="submit">Giriş Yap</button>
-        </form>
-
-        <p>Hesabın yok mu?
-            <a onclick="showRegister()">Kayıt Ol</a>
-        </p>
-
-        <span class="back-home" onclick="showHome()">← Ana Sayfaya Dön</span>
-        <div class="message" id="loginMessage"></div>
-    </div>
-</section>
-
-<!-- KAYIT EKRANI -->
-
-<section class="auth-section" id="registerSection">
-    <div class="auth-box">
-        <h2>Eduverse'e Kayıt Ol</h2>
-
-        <form onsubmit="demoRegister(event)">
-            <input type="text" placeholder="Adın" required>
-            <input type="text" placeholder="Soyadın" required>
-            <input type="email" placeholder="E-posta adresin" required>
-
-            <select required>
-                <option value="">Sınıfını seç</option>
-                <option>1. Sınıf</option>
-                <option>2. Sınıf</option>
-                <option>3. Sınıf</option>
-                <option>4. Sınıf</option>
-                <option>5. Sınıf</option>
-                <option>6. Sınıf</option>
-                <option>7. Sınıf</option>
-                <option>8. Sınıf</option>
-                <option>9. Sınıf</option>
-                <option>10. Sınıf</option>
-                <option>11. Sınıf</option>
-                <option>12. Sınıf</option>
-            </select>
-
-            <input type="password" placeholder="Şifre oluştur" minlength="8" required>
-
-            <button type="submit">Hesap Oluştur</button>
-        </form>
-
-        <p>Zaten hesabın var mı?
-            <a onclick="showLogin()">Giriş Yap</a>
-        </p>
-
-        <span class="back-home" onclick="showHome()">← Ana Sayfaya Dön</span>
-        <div class="message" id="registerMessage"></div>
-    </div>
-</section>
-
 <footer>
-    © 2026 Eduverse | Öğrenmenin Yeni Evreni
+    <strong>Eduverse.</strong>
+    <p>© 2026 Eduverse | Öğrenmenin Yeni Evreni</p>
 </footer>
 
 <script>
-function showHome() {
+
+/* DERS VE KONU VERİLERİ */
+
+const subjects = [
+
+{
+    id: "turkce",
+    name: "Türkçe",
+    icon: "📖",
+    description: "Sesler, harfler, kelimeler ve okuma.",
+    lessons: [
+        {
+            title: "Sesleri Tanıyalım",
+            text: "Çevremizde birçok farklı ses duyarız. Kuşların ötmesi, zilin çalması ve insanların konuşması birer sestir. Konuşurken kullandığımız sesleri harflerle gösteririz.",
+            example: "A sesiyle başlayan kelimeler: Arı, araba, ağaç.",
+            question: "Aşağıdakilerden hangisi A sesiyle başlar?",
+            options: ["Masa", "Araba", "Kedi"],
+            answer: 1
+        },
+        {
+            title: "Hece ve Kelimeler",
+            text: "Kelimeler hecelerden oluşur. Bir kelimeyi söylerken ağzımızın her açılışında bir hece duyabiliriz.",
+            example: "Elma kelimesi el-ma şeklinde iki hecedir.",
+            question: "Kalem kelimesi kaç hecedir?",
+            options: ["Bir", "İki", "Üç"],
+            answer: 1
+        },
+        {
+            title: "Cümleler",
+            text: "Cümleler bir düşünceyi veya duyguyu anlatır. Cümleler büyük harfle başlar ve uygun noktalama işaretiyle biter.",
+            example: "Ben kitap okuyorum.",
+            question: "Hangisi doğru yazılmıştır?",
+            options: ["ben okula gittim", "Ben okula gittim.", "ben Okula gittim"],
+            answer: 1
+        },
+        {
+            title: "Noktalama İşaretleri",
+            text: "Noktalama işaretleri yazılarımızı daha anlaşılır hâle getirir. Nokta, soru işareti ve ünlem işareti bunlardan bazılarıdır.",
+            example: "Bugün hava güzel. Sen nasılsın? Yaşasın!",
+            question: "Soru cümlesinin sonuna hangisi gelir?",
+            options: ["Nokta", "Virgül", "Soru işareti"],
+            answer: 2
+        },
+        {
+            title: "Okuduğumuzu Anlayalım",
+            text: "Bir metni okurken anlatılanları anlamaya çalışırız. Metindeki kişileri, olayları ve yerleri bulabiliriz.",
+            example: "Ali parka gitti ve salıncakta oynadı. Ali'nin gittiği yer parktır.",
+            question: "Ali nereye gitti?",
+            options: ["Okula", "Parka", "Markete"],
+            answer: 1
+        }
+    ]
+},
+
+{
+    id: "matematik",
+    name: "Matematik",
+    icon: "🔢",
+    description: "Sayılar, işlemler ve geometrik şekiller.",
+    lessons: [
+        {
+            title: "Sayıları Tanıyalım",
+            text: "Sayılar nesnelerin kaç tane olduğunu anlamamıza yardımcı olur. Sayıları kullanarak çevremizdeki nesneleri sayabiliriz.",
+            example: "🍎 🍎 🍎 = 3 elma.",
+            question: "İki elmadan sonra hangi sayı gelir?",
+            options: ["1", "3", "5"],
+            answer: 1
+        },
+        {
+            title: "Sayıları Karşılaştıralım",
+            text: "Sayıları karşılaştırırken büyüktür, küçüktür ve eşittir işaretlerini kullanabiliriz.",
+            example: "5, 3'ten büyüktür. 2, 4'ten küçüktür.",
+            question: "Hangisi daha büyüktür?",
+            options: ["3", "7", "1"],
+            answer: 1
+        },
+        {
+            title: "Toplama İşlemi",
+            text: "Toplama, sayıları bir araya getirmektir. Toplama işleminde artı işaretini kullanırız.",
+            example: "2 + 3 = 5",
+            question: "4 + 3 kaç eder?",
+            options: ["6", "7", "8"],
+            answer: 1
+        },
+        {
+            title: "Çıkarma İşlemi",
+            text: "Çıkarma işleminde bir sayıdan başka bir sayıyı eksiltiriz.",
+            example: "5 - 2 = 3",
+            question: "8 - 3 kaç eder?",
+            options: ["4", "5", "6"],
+            answer: 1
+        },
+        {
+            title: "Geometrik Şekiller",
+            text: "Çevremizde kare, üçgen, daire ve dikdörtgen gibi şekiller görürüz.",
+            example: "Bir saatin yüzü genellikle daire şeklindedir.",
+            question: "Üç kenarı olan şekil hangisidir?",
+            options: ["Kare", "Daire", "Üçgen"],
+            answer: 2
+        },
+        {
+            title: "Örüntüler",
+            text: "Örüntüler belirli bir kurala göre tekrar eden şekil veya sayılardır.",
+            example: "🔴 🔵 🔴 🔵 🔴 ...",
+            question: "Kırmızı, mavi, kırmızı, mavi dizisinden sonra ne gelir?",
+            options: ["Kırmızı", "Yeşil", "Sarı"],
+            answer: 0
+        }
+    ]
+},
+
+{
+    id: "hayat",
+    name: "Hayat Bilgisi",
+    icon: "🌍",
+    description: "Okul, aile, çevre ve günlük yaşam.",
+    lessons: [
+        {
+            title: "Ben ve Okulum",
+            text: "Okulumuzda öğretmenlerimiz ve arkadaşlarımızla birlikte öğreniriz. Okulda birbirimize saygılı davranmalı ve sınıf kurallarına uymalıyız.",
+            example: "Arkadaşımız konuşurken onu dikkatle dinleriz.",
+            question: "Sınıfta nasıl davranmalıyız?",
+            options: ["Arkadaşımızı dinlemeliyiz", "Bağırmalıyız", "Eşyaları kırmalıyız"],
+            answer: 0
+        },
+        {
+            title: "Ailemiz",
+            text: "Ailemiz bizim için önemlidir. Aile bireyleri birbirlerine sevgi ve saygı gösterir. Evde birbirimize yardım edebiliriz.",
+            example: "Sofrayı hazırlamaya yardım edebiliriz.",
+            question: "Aile içinde nasıl davranmalıyız?",
+            options: ["Saygılı ve yardımsever", "Kaba", "İlgisiz"],
+            answer: 0
+        },
+        {
+            title: "Sağlıklı Yaşam",
+            text: "Sağlıklı olmak için dengeli beslenmeli, yeterince dinlenmeli ve kişisel temizliğimize dikkat etmeliyiz.",
+            example: "Yemeklerden önce ellerimizi yıkamalıyız.",
+            question: "Hangisi temiz bir alışkanlıktır?",
+            options: ["Ellerimizi yıkamak", "Dişlerimizi hiç fırçalamamak", "Kirli su içmek"],
+            answer: 0
+        },
+        {
+            title: "Güvenliğimiz",
+            text: "Evde, okulda ve dışarıda güvenli davranmalıyız. Bilmediğimiz durumlarda güvendiğimiz bir yetişkinden yardım istemeliyiz.",
+            example: "Karşıdan karşıya geçerken yaya geçidini kullanırız.",
+            question: "Yolu nereden geçmeliyiz?",
+            options: ["Yaya geçidinden", "Araçların arasından", "Herhangi bir yerden"],
+            answer: 0
+        },
+        {
+            title: "Doğayı Koruyalım",
+            text: "Doğa, bitkiler ve hayvanlar yaşamımız için önemlidir. Çevremizi temiz tutmalı ve kaynakları dikkatli kullanmalıyız.",
+            example: "Kullanmadığımız zaman ışıkları kapatabiliriz.",
+            question: "Hangisi doğayı korumaya yardımcı olur?",
+            options: ["Çöpleri yere atmak", "Suyu gereksiz kullanmak", "Çöpleri çöp kutusuna atmak"],
+            answer: 2
+        }
+    ]
+},
+
+{
+    id: "sanat",
+    name: "Görsel Sanatlar",
+    icon: "🎨",
+    description: "Renkler, çizgiler ve yaratıcılık.",
+    lessons: [
+        {
+            title: "Ana Renkler",
+            text: "Resim çalışmalarında kırmızı, sarı ve mavi gibi temel renkleri tanırız. Bu renkleri kullanarak yeni renkler oluşturabiliriz.",
+            example: "Sarı ve mavi boyayı karıştırdığımızda yeşil elde ederiz.",
+            question: "Sarı ve mavi karışınca hangi renk oluşur?",
+            options: ["Yeşil", "Mor", "Turuncu"],
+            answer: 0
+        },
+        {
+            title: "Sıcak ve Soğuk Renkler",
+            text: "Bazı renkler bize sıcaklığı, bazı renkler ise serinliği hatırlatır. Kırmızı ve turuncu sıcak renklerdendir. Mavi ve yeşil soğuk renklerdendir.",
+            example: "Güneşi sarı ve turuncu renklerle çizebiliriz.",
+            question: "Hangisi sıcak renktir?",
+            options: ["Mavi", "Kırmızı", "Yeşil"],
+            answer: 1
+        },
+        {
+            title: "Şekiller Çizelim",
+            text: "Resimlerimizde kare, daire, üçgen ve dikdörtgen gibi şekiller kullanabiliriz.",
+            example: "Bir evin çatısını üçgen şeklinde çizebiliriz.",
+            question: "Dört eşit kenarı olan şekil hangisidir?",
+            options: ["Kare", "Daire", "Üçgen"],
+            answer: 0
+        }
+    ]
+},
+
+{
+    id: "muzik",
+    name: "Müzik",
+    icon: "🎵",
+    description: "Sesler, ritimler ve müzik aletleri.",
+    lessons: [
+        {
+            title: "Sesleri Dinleyelim",
+            text: "Çevremizde ince, kalın, yüksek ve alçak sesler bulunur. Müzik yaparken farklı sesleri kullanırız.",
+            example: "Kuş sesi ile davul sesi birbirinden farklıdır.",
+            question: "Hangisi bir müzik aletidir?",
+            options: ["Davul", "Masa", "Kalem"],
+            answer: 0
+        },
+        {
+            title: "Ritim Nedir?",
+            text: "Ritim, seslerin belirli bir düzende tekrarlanmasıdır. El çırparak ritim oluşturabiliriz.",
+            example: "Alkış - alkış - bekle - alkış.",
+            question: "Ritim neyle ilgilidir?",
+            options: ["Seslerin düzeniyle", "Yemek yapmakla", "Resim boyamakla"],
+            answer: 0
+        },
+        {
+            title: "Müzik Aletleri",
+            text: "Müzik aletleri farklı sesler çıkarmamızı sağlar. Piyano, gitar, keman ve davul müzik aletlerine örnektir.",
+            example: "Piyanoda tuşlara basarak ses çıkarırız.",
+            question: "Hangisi telli bir müzik aletidir?",
+            options: ["Davul", "Gitar", "Flüt"],
+            answer: 1
+        }
+    ]
+},
+
+{
+    id: "beden",
+    name: "Beden Eğitimi ve Oyun",
+    icon: "⚽",
+    description: "Hareket, oyun ve iş birliği.",
+    lessons: [
+        {
+            title: "Temel Hareketler",
+            text: "Yürümek, koşmak, zıplamak ve dengede durmak temel hareketlerdir. Hareket ederken çevremize dikkat etmeliyiz.",
+            example: "Oyun alanında arkadaşlarımızla aramızda yeterli mesafe bırakırız.",
+            question: "Hangisi temel bir harekettir?",
+            options: ["Zıplamak", "Uyumak", "Kitap okumak"],
+            answer: 0
+        },
+        {
+            title: "Takım Oyunları",
+            text: "Takım oyunlarında arkadaşlarımızla birlikte hareket ederiz. Kurallara uymak ve birbirimize saygı göstermek önemlidir.",
+            example: "Bir oyun sırasında arkadaşlarımızla paslaşabiliriz.",
+            question: "Takım oyununda ne yapmalıyız?",
+            options: ["Kurallara uymalıyız", "Arkadaşlarımızı dışlamalıyız", "Tartışmalıyız"],
+            answer: 0
+        },
+        {
+            title: "Oyun Kuralları",
+            text: "Oyun kuralları herkesin güvenli ve adil şekilde oynamasına yardımcı olur. Oyuna katılan herkes kurallara uymalıdır.",
+            example: "Oyun sırasını beklemek ve arkadaşlarımızı dinlemek önemlidir.",
+            question: "Oyun sırasında ne yapmalıyız?",
+            options: ["Sıramızı beklemeliyiz", "Kuralları bozmalıyız", "Arkadaşlarımızı itmeliyiz"],
+            answer: 0
+        }
+    ]
+}
+
+];
+
+/* UYGULAMA DURUMU */
+
+let currentSubject = null;
+let currentLesson = null;
+
+const completed = new Set(
+    JSON.parse(localStorage.getItem("eduverseCompleted") || "[]")
+);
+
+function saveProgress() {
+    localStorage.setItem(
+        "eduverseCompleted",
+        JSON.stringify([...completed])
+    );
+    updateProgress();
+}
+
+function totalLessons() {
+    return subjects.reduce(
+        (total, subject) => total + subject.lessons.length, 0
+    );
+}
+
+function updateProgress() {
+    const total = totalLessons();
+    const count = completed.size;
+    const percentage = total ? Math.round(count / total * 100) : 0;
+
+    document.getElementById("progressText").textContent =
+        count + " / " + total + " konu tamamlandı (" + percentage + "%)";
+
+    document.getElementById("progressFill").style.width =
+        percentage + "%";
+}
+
+/* ANA SAYFA VE EĞİTİM EKRANLARI */
+
+function goHome() {
     document.getElementById("home").style.display = "block";
-    document.getElementById("loginSection").style.display = "none";
-    document.getElementById("registerSection").style.display = "none";
+    document.getElementById("subjectScreen").classList.remove("hidden");
+    document.getElementById("topicScreen").classList.add("hidden");
+    document.getElementById("lessonScreen").classList.add("hidden");
     window.scrollTo(0, 0);
 }
 
-function showLogin() {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("loginSection").style.display = "flex";
-    document.getElementById("registerSection").style.display = "none";
-    window.scrollTo(0, 0);
+function openEducation() {
+    document.getElementById("egitim").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-function showRegister() {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("loginSection").style.display = "none";
-    document.getElementById("registerSection").style.display = "flex";
-    window.scrollTo(0, 0);
+function showSubjects() {
+    document.getElementById("subjectScreen").classList.remove("hidden");
+    document.getElementById("topicScreen").classList.add("hidden");
+    document.getElementById("lessonScreen").classList.add("hidden");
+    currentSubject = null;
 }
 
-function demoLogin(event) {
-    event.preventDefault();
-    document.getElementById("loginMessage").textContent =
-        "Bu demo ekrandır. Gerçek giriş için Firebase bağlantısı gereklidir.";
+function renderSubjects() {
+    const search = document.getElementById("searchInput")
+        .value.toLocaleLowerCase("tr");
+
+    const container = document.getElementById("subjectContainer");
+
+    const filtered = subjects.filter(subject => {
+        const subjectMatch =
+            subject.name.toLocaleLowerCase("tr").includes(search);
+
+        const lessonMatch = subject.lessons.some(lesson =>
+            lesson.title.toLocaleLowerCase("tr").includes(search)
+        );
+
+        return subjectMatch || lessonMatch;
+    });
+
+    if (!filtered.length) {
+        container.innerHTML =
+            '<div class="empty-message">Aradığın ders veya konu bulunamadı.</div>';
+        return;
+    }
+
+    container.innerHTML = filtered.map(subject => `
+        <div class="subject-card" onclick="openSubject('${subject.id}')">
+            <div class="subject-icon">${subject.icon}</div>
+            <h3>${subject.name}</h3>
+            <p>${subject.description}</p>
+            <p>${subject.lessons.length} konu</p>
+            <button>Derse Git →</button>
+        </div>
+    `).join("");
 }
 
-function demoRegister(event) {
-    event.preventDefault();
-    document.getElementById("registerMessage").textContent =
-        "Bu demo ekrandır. Gerçek kayıt için Firebase bağlantısı gereklidir.";
+function openSubject(id) {
+    currentSubject = subjects.find(subject => subject.id === id);
+
+    if (!currentSubject) return;
+
+    document.getElementById("subjectScreen").classList.add("hidden");
+    document.getElementById("topicScreen").classList.remove("hidden");
+    document.getElementById("lessonScreen").classList.add("hidden");
+
+    document.getElementById("topicTitle").textContent =
+        currentSubject.icon + " " + currentSubject.name;
+
+    document.getElementById("topicDescription").textContent =
+        currentSubject.description;
+
+    const container = document.getElementById("topicContainer");
+
+    container.innerHTML = currentSubject.lessons.map((lesson, index) => {
+        const key = currentSubject.id + "-" + index;
+        const isDone = completed.has(key);
+
+        return `
+            <div class="lesson-item">
+                <div>
+                    <h3>${index + 1}. ${lesson.title}</h3>
+                    <p>${isDone ? "✓ Tamamlandı" : "Konu anlatımı ve mini test"}</p>
+                </div>
+                <button onclick="openLesson(${index})">
+                    ${isDone ? "Tekrar Et" : "Öğren →"}
+                </button>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("topicScreen").scrollIntoView({
+        behavior: "smooth"
+    });
 }
+
+/* KONU ANLATIMI */
+
+function openLesson(index) {
+    currentLesson = index;
+
+    const lesson = currentSubject.lessons[index];
+
+    document.getElementById("topicScreen").classList.add("hidden");
+    document.getElementById("lessonScreen").classList.remove("hidden");
+
+    document.getElementById("lessonContent").innerHTML = `
+        <div class="lesson-panel">
+            <h2>${lesson.title}</h2>
+
+            <h3>📘 Konu Anlatımı</h3>
+            <p>${lesson.text}</p>
+
+            <div class="example-box">
+                <strong>💡 Örnek:</strong>
+                <p>${lesson.example}</p>
+            </div>
+
+            <h3>🎯 Öğrenme İpucu</h3>
+            <p>
+                Konuyu kendi cümlelerinle anlatmayı dene.
+                Ardından mini testi çözerek öğrendiklerini kontrol et.
+            </p>
+        </div>
+
+        <div class="quiz-box">
+            <h2>🧠 Mini Test</h2>
+            <p class="quiz-question">${lesson.question}</p>
+
+            <div id="quizOptions">
+                ${lesson.options.map((option, i) => `
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="${i}">
+                        ${option}
+                    </label>
+                `).join("")}
+            </div>
+
+            <button class="action-button" onclick="checkAnswer()">
+                Cevabı Kontrol Et
+            </button>
+
+            <p class="quiz-result" id="quizResult"></p>
+        </div>
+    `;
+
+    document.getElementById("lessonScreen").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+/* TEST KONTROLÜ */
+
+function checkAnswer() {
+    const lesson = currentSubject.lessons[currentLesson];
+
+    const selected = document.querySelector(
+        'input[name="answer"]:checked'
+    );
+
+    const result = document.getElementById("quizResult");
+
+    if (!selected) {
+        result.textContent = "Önce bir cevap seçmelisin.";
+        result.style.color = "#d97706";
+        return;
+    }
+
+    if (Number(selected.value) === lesson.answer) {
+        result.textContent = "🎉 Harika! Doğru cevap. Konuyu tamamladın!";
+        result.style.color = "green";
+
+        const key = currentSubject.id + "-" + currentLesson;
+        completed.add(key);
+        saveProgress();
+    } else {
+        result.textContent =
+            "Tekrar dene! Konu anlatımını yeniden okuyabilirsin.";
+        result.style.color = "#d97706";
+    }
+}
+
+function backToTopics() {
+    if (currentSubject) {
+        openSubject(currentSubject.id);
+    } else {
+        showSubjects();
+    }
+}
+
+/* BAŞLANGIÇ */
+
+renderSubjects();
+updateProgress();
+
 </script>
 
 </body>
