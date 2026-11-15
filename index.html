@@ -3,410 +3,201 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#6254dc">
-<title>Eduverse | Öğrenmenin Yeni Evreni</title>
+<title>Eduverse | Eğitim Platformu</title>
 
 <style>
 :root {
-    --primary: #6254dc;
-    --secondary: #8978f5;
-    --dark: #18213b;
-    --background: #f5f7ff;
-    --white: #ffffff;
-    --muted: #737b94;
-    --border: #e8e9f4;
-    --success: #16875d;
+    --primary:#6254dc;
+    --primary-dark:#4c3fc1;
+    --purple-light:#f0edff;
+    --bg:#f6f7fc;
+    --text:#20243a;
+    --muted:#788096;
+    --white:#fff;
+    --border:#e9eaf2;
+    --green:#15966a;
+    --shadow:0 8px 30px rgba(37,35,80,.07);
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
-
-html {
-    scroll-behavior: smooth;
+button,input{font:inherit}
+button{cursor:pointer}
+header{
+    height:auto;min-height:76px;background:white;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:15px 6%;gap:20px;flex-wrap:wrap;
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:20;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background: var(--background);
-    color: var(--dark);
-    line-height: 1.6;
+.logo{font-size:27px;font-weight:900;color:var(--primary);cursor:pointer}
+.logo span{color:var(--text)}
+nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+nav a{
+    text-decoration:none;color:#535b72;font-size:14px;
+    font-weight:700;
 }
-
-button, input {
-    font: inherit;
+nav a:hover{color:var(--primary)}
+.container{width:min(1120px,90%);margin:auto}
+.hero{
+    background:linear-gradient(120deg,#5144c9,#8878f4);
+    color:white;padding:90px 6%;position:relative;overflow:hidden;
 }
-
-button {
-    cursor: pointer;
+.hero:after{
+    content:"";position:absolute;width:330px;height:330px;
+    border:50px solid #ffffff15;border-radius:50%;
+    right:-90px;top:-130px;
 }
-
-header {
-    background: white;
-    padding: 17px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 12px #0000000c;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.hero-content{max-width:780px;margin:auto;text-align:center;position:relative;z-index:1}
+.hero-label{
+    display:inline-block;background:#ffffff24;padding:8px 16px;
+    border-radius:30px;font-size:13px;margin-bottom:22px;
 }
-
-.logo {
-    font-size: 27px;
-    font-weight: 800;
-    color: var(--primary);
-    cursor: pointer;
+.hero h1{font-size:clamp(34px,5vw,55px);line-height:1.15;margin-bottom:20px}
+.hero p{font-size:18px;line-height:1.7;color:#f1efff;margin-bottom:30px}
+.primary-btn{
+    background:white;color:var(--primary);border:0;
+    padding:14px 23px;border-radius:11px;font-weight:800;
 }
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.primary-btn:hover{transform:translateY(-2px)}
+.section{padding:65px 0}
+.section-title{text-align:center;margin-bottom:32px}
+.section-title h2{font-size:30px;margin-bottom:8px}
+.section-title p{color:var(--muted)}
+.features{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
 }
-
-nav a {
-    text-decoration: none;
-    color: #39415c;
-    font-weight: bold;
-    font-size: 14px;
+.feature,.panel,.grade-card,.subject-card,.topic-card{
+    background:white;border:1px solid var(--border);
+    border-radius:17px;box-shadow:var(--shadow);
 }
-
-nav a:hover {
-    color: var(--primary);
+.feature{padding:25px}
+.feature-icon{font-size:32px}
+.feature h3{margin:12px 0 7px}
+.feature p{color:var(--muted);font-size:14px;line-height:1.6}
+#academy{scroll-margin-top:95px}
+.toolbar{
+    display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;
 }
-
-.nav-button {
-    background: var(--primary);
-    color: white;
-    padding: 10px 16px;
-    border-radius: 9px;
+.search{
+    flex:1;min-width:220px;padding:14px 16px;
+    background:white;border:1px solid var(--border);
+    border-radius:11px;outline:none;
 }
-
-.hero {
-    padding: 95px 8%;
-    text-align: center;
-    color: white;
-    background: linear-gradient(135deg, #6254dc, #8978f5);
+.search:focus{border-color:var(--primary)}
+.grade-grid,.subject-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
 }
-
-.hero .tag {
-    display: inline-block;
-    background: #ffffff25;
-    padding: 7px 15px;
-    border-radius: 30px;
-    margin-bottom: 20px;
+.grade-card{
+    padding:25px;cursor:pointer;transition:.2s;
+    border-top:4px solid var(--primary);
 }
-
-.hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.2;
-    margin-bottom: 20px;
+.grade-card:hover,.subject-card:hover,.topic-card:hover{
+    transform:translateY(-4px);
 }
-
-.hero p {
-    font-size: 18px;
-    max-width: 650px;
-    margin: 0 auto 28px;
+.grade-number{font-size:35px;font-weight:900;color:var(--primary)}
+.grade-card h3{margin:8px 0}
+.grade-card p{font-size:14px;color:var(--muted)}
+.subject-card{padding:23px;cursor:pointer;transition:.2s}
+.subject-icon{font-size:37px}
+.subject-card h3{margin:12px 0 5px}
+.subject-card p{font-size:13px;color:var(--muted);line-height:1.6}
+.small-btn,.action-btn{
+    border:0;background:var(--primary);color:white;
+    border-radius:9px;padding:11px 15px;font-weight:700;
+    margin-top:16px;
 }
-
-.primary-button {
-    background: white;
-    color: var(--primary);
-    border: none;
-    padding: 14px 25px;
-    border-radius: 10px;
-    font-weight: bold;
+.small-btn:hover,.action-btn:hover{background:var(--primary-dark)}
+.back-btn{
+    background:var(--purple-light);color:var(--primary);
+    border:0;padding:11px 16px;border-radius:9px;
+    font-weight:700;margin-bottom:23px;
 }
-
-.primary-button:hover {
-    transform: translateY(-2px);
+.page-heading{margin-bottom:25px}
+.page-heading h2{font-size:28px;margin-bottom:5px}
+.page-heading p{color:var(--muted)}
+.progress-panel{
+    padding:22px;background:white;border:1px solid var(--border);
+    border-radius:15px;margin-bottom:25px;
 }
-
-.section {
-    padding: 60px 8%;
+.progress-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.progress-track{
+    height:10px;background:#ecebfa;border-radius:20px;
+    overflow:hidden;margin-top:13px;
 }
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 35px;
+.progress-fill{
+    height:100%;width:0;background:linear-gradient(90deg,#6254dc,#a18dfb);
+    transition:.3s;
 }
-
-.section-heading h2 {
-    font-size: 32px;
-    margin-bottom: 8px;
+.topic-list{display:grid;gap:14px}
+.topic-card{
+    padding:20px;display:flex;justify-content:space-between;
+    align-items:center;gap:15px;flex-wrap:wrap;transition:.2s;
 }
-
-.section-heading p {
-    color: var(--muted);
+.topic-card h3{margin-bottom:4px;color:var(--primary)}
+.topic-card p{font-size:13px;color:var(--muted)}
+.done-label{font-size:12px;color:var(--green);font-weight:800}
+.lesson-panel,.quiz-panel{
+    background:white;border:1px solid var(--border);
+    border-radius:17px;padding:28px;margin-bottom:20px;
+    box-shadow:var(--shadow);
 }
-
-.feature-grid,
-.subject-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 20px;
+.lesson-panel h2{font-size:27px;color:var(--primary);margin-bottom:17px}
+.lesson-panel h3{margin:22px 0 8px}
+.lesson-panel p{line-height:1.85;margin-bottom:12px}
+.lesson-example{
+    background:var(--purple-light);border-left:4px solid var(--primary);
+    padding:17px;border-radius:9px;margin:18px 0;
 }
-
-.feature-card,
-.subject-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    padding: 25px;
-    box-shadow: 0 4px 15px #00000008;
+.lesson-example p{margin:6px 0 0}
+.quiz-header{
+    display:flex;justify-content:space-between;
+    align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;
 }
-
-.feature-card h3,
-.subject-card h3 {
-    color: var(--primary);
-    margin: 8px 0;
+.quiz-header h2{font-size:23px}
+.quiz-count{
+    background:var(--purple-light);color:var(--primary);
+    padding:7px 12px;border-radius:20px;font-size:13px;font-weight:800;
 }
-
-.subject-card {
-    cursor: pointer;
-    text-align: left;
-    transition: .2s;
+.question-card{
+    padding:20px 0;border-top:1px solid var(--border);
 }
-
-.subject-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--secondary);
+.question-card h3{font-size:16px;margin-bottom:13px}
+.option{
+    display:block;padding:12px 14px;margin:9px 0;
+    border:1px solid var(--border);border-radius:10px;
+    cursor:pointer;transition:.15s;
 }
-
-.subject-icon {
-    font-size: 38px;
+.option:hover{border-color:var(--primary);background:#faf9ff}
+.option input{margin-right:9px;accent-color:var(--primary)}
+.quiz-result{
+    margin-top:20px;padding:20px;border-radius:12px;
+    background:var(--purple-light);display:none;
 }
-
-.subject-card p {
-    color: var(--muted);
-    font-size: 14px;
+.quiz-result h3{font-size:25px;color:var(--primary);margin-bottom:5px}
+.quiz-result p{color:var(--muted)}
+footer{
+    background:#1c2038;color:white;text-align:center;
+    padding:35px 15px;margin-top:40px;
 }
-
-.subject-card button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    margin-top: 16px;
-}
-
-.progress-box {
-    background: white;
-    padding: 23px;
-    border-radius: 15px;
-    margin-bottom: 28px;
-    border: 1px solid var(--border);
-}
-
-.progress-track {
-    height: 12px;
-    background: #ecebfa;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 12px;
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, #6254dc, #a18dfb);
-    transition: width .3s;
-}
-
-.toolbar {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-}
-
-.toolbar input {
-    flex: 1;
-    min-width: 200px;
-    padding: 13px 16px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: white;
-}
-
-.lesson-list {
-    display: grid;
-    gap: 15px;
-}
-
-.lesson-item {
-    background: white;
-    padding: 22px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.lesson-item h3 {
-    color: var(--primary);
-}
-
-.lesson-item p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.lesson-item button,
-.back-button,
-.action-button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 11px 17px;
-    border-radius: 9px;
-    font-weight: bold;
-}
-
-.back-button {
-    margin-bottom: 20px;
-    background: #eae8ff;
-    color: var(--primary);
-}
-
-.lesson-content {
-    max-width: 850px;
-    margin: auto;
-}
-
-.lesson-panel {
-    background: white;
-    padding: 30px;
-    border-radius: 17px;
-    border: 1px solid var(--border);
-    margin-bottom: 20px;
-}
-
-.lesson-panel h2 {
-    color: var(--primary);
-    margin-bottom: 18px;
-}
-
-.lesson-panel h3 {
-    margin: 22px 0 8px;
-}
-
-.lesson-panel p {
-    margin-bottom: 12px;
-}
-
-.example-box {
-    background: #f0efff;
-    border-left: 4px solid var(--primary);
-    padding: 17px;
-    border-radius: 8px;
-    margin: 18px 0;
-}
-
-.quiz-box {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 25px;
-    margin-top: 20px;
-}
-
-.quiz-question {
-    font-weight: bold;
-    margin: 15px 0;
-}
-
-.quiz-option {
-    display: block;
-    background: #f5f4ff;
-    border: 1px solid transparent;
-    border-radius: 9px;
-    padding: 13px;
-    margin: 10px 0;
-    cursor: pointer;
-}
-
-.quiz-option:hover {
-    border-color: var(--secondary);
-}
-
-.quiz-option input {
-    margin-right: 10px;
-}
-
-.quiz-result {
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-.completed {
-    color: var(--success);
-    font-weight: bold;
-}
-
-.empty-message {
-    text-align: center;
-    padding: 35px;
-    color: var(--muted);
-    background: white;
-    border-radius: 12px;
-}
-
-.about {
-    background: white;
-    text-align: center;
-}
-
-.about p {
-    max-width: 700px;
-    margin: auto;
-    color: var(--muted);
-}
-
-footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 30px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-@media(max-width: 650px) {
-    header {
-        justify-content: center;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .section {
-        padding: 45px 6%;
-    }
-
-    .hero {
-        padding: 65px 6%;
-    }
-
-    .lesson-panel {
-        padding: 20px;
-    }
+footer p{font-size:13px;color:#b9bdd0;margin-top:8px}
+.about{background:white}
+.about p{max-width:720px;margin:auto;text-align:center;color:var(--muted);line-height:1.8}
+.hidden{display:none!important}
+@media(max-width:650px){
+    header{justify-content:center}
+    nav{justify-content:center;gap:13px}
+    .hero{padding:65px 6%}
+    .section{padding:45px 0}
+    .lesson-panel,.quiz-panel{padding:19px}
 }
 </style>
 </head>
@@ -414,621 +205,743 @@ footer {
 <body>
 
 <header>
-    <div class="logo" onclick="goHome()">Eduverse.</div>
-
+    <div class="logo" onclick="goHome()">Eduverse<span>.</span></div>
     <nav>
         <a href="#" onclick="goHome()">Ana Sayfa</a>
-        <a href="#egitim" onclick="goHome()">Eğitim</a>
-        <a href="#hakkinda" onclick="goHome()">Hakkımızda</a>
-        <a href="#egitim" class="nav-button" onclick="goHome()">Derslere Başla</a>
+        <a href="#academy" onclick="goAcademy()">Eğitim Merkezi</a>
+        <a href="#about">Hakkımızda</a>
     </nav>
 </header>
 
 <main id="home">
 
-    <section class="hero">
-        <div class="tag">🌟 Yeni nesil eğitim platformu</div>
-
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-label">✦ Yeni nesil öğrenme deneyimi</div>
         <h1>Öğrenmenin Yeni Evrenine Hoş Geldin!</h1>
-
         <p>
-            Keşfet, öğren, dene ve kendini geliştir.
-            Geleceğini Eduverse ile şekillendir.
+            Keşfet, öğren, kendini geliştir.
+            Her gün yeni bir bilgi, her gün yeni bir başarı.
         </p>
-
-        <button class="primary-button"
-            onclick="openEducation()">
-            Öğrenmeye Başla →
+        <button class="primary-btn" onclick="goAcademy()">
+            Eğitim Merkezine Git →
         </button>
-    </section>
+    </div>
+</section>
 
-    <section class="section">
-        <div class="section-heading">
-            <h2>Neden Eduverse?</h2>
-            <p>Öğrenmeyi daha eğlenceli ve anlaşılır hâle getiriyoruz.</p>
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Eduverse ile Öğren</h2>
+            <p>Bilgini geliştirmenin eğlenceli yolu.</p>
         </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="subject-icon">📚</div>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📚</div>
                 <h3>Konu Anlatımları</h3>
-                <p>Konuları basit ve anlaşılır şekilde öğren.</p>
+                <p>Konuları sade, anlaşılır ve örneklerle öğren.</p>
             </div>
-
-            <div class="feature-card">
-                <div class="subject-icon">🧠</div>
-                <h3>Mini Testler</h3>
-                <p>Öğrendiklerini sorularla kontrol et.</p>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3>10 Soruluk Testler</h3>
+                <p>Her testte öğrendiklerini ölç ve puanını gör.</p>
             </div>
-
-            <div class="feature-card">
-                <div class="subject-icon">📈</div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
                 <h3>İlerleme Takibi</h3>
-                <p>Tamamladığın konuları takip et.</p>
+                <p>Tamamladığın konuları ve başarılarını takip et.</p>
             </div>
-
-            <div class="feature-card">
-                <div class="subject-icon">🌍</div>
-                <h3>Yeni Bilgiler</h3>
-                <p>Her gün yeni şeyler keşfet.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="egitim">
-        <div class="section-heading">
-            <h2>📚 Eğitim Merkezi</h2>
-            <p>Şimdilik 1. sınıf dersleriyle başlıyoruz.</p>
-        </div>
-
-        <div class="progress-box">
-            <strong>🌟 Öğrenme İlerlemen</strong>
-            <p id="progressText">Henüz konu tamamlamadın.</p>
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
+            <div class="feature">
+                <div class="feature-icon">💡</div>
+                <h3>Öğrenme Alanı</h3>
+                <p>Kendi hızında çalış ve yeni bilgiler keşfet.</p>
             </div>
         </div>
+    </div>
+</section>
 
-        <div id="subjectScreen">
-            <div class="toolbar">
-                <input id="searchInput"
-                    type="search"
-                    placeholder="Ders veya konu ara..."
-                    oninput="renderSubjects()">
-            </div>
+<section class="section" id="academy">
+<div class="container">
 
-            <div class="subject-grid" id="subjectContainer"></div>
+    <div class="section-title">
+        <h2>🎓 Eğitim Merkezi</h2>
+        <p>Önce sınıfını seç, ardından derslerine başla.</p>
+    </div>
+
+    <div class="progress-panel">
+        <div class="progress-top">
+            <strong>📊 Genel ilerlemen</strong>
+            <strong id="progressText">0%</strong>
         </div>
-
-        <div id="topicScreen" class="hidden">
-            <button class="back-button" onclick="showSubjects()">
-                ← Derslere Dön
-            </button>
-            <div class="section-heading">
-                <h2 id="topicTitle"></h2>
-                <p id="topicDescription"></p>
-            </div>
-            <div class="lesson-list" id="topicContainer"></div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
+        <p id="progressDetail" style="font-size:13px;color:#788096;margin-top:9px">
+            Henüz konu tamamlamadın.
+        </p>
+    </div>
 
-        <div id="lessonScreen" class="hidden">
-            <button class="back-button" onclick="backToTopics()">
-                ← Konulara Dön
-            </button>
-            <div class="lesson-content" id="lessonContent"></div>
+    <div id="gradeScreen">
+        <div class="grade-grid" id="gradeContainer"></div>
+    </div>
+
+    <div id="subjectScreen" class="hidden">
+        <button class="back-btn" onclick="showGrades()">← Sınıflara Dön</button>
+        <div class="page-heading">
+            <h2 id="gradeTitle"></h2>
+            <p>Bir ders seçerek konulara ulaşabilirsin.</p>
         </div>
-    </section>
+        <div class="toolbar">
+            <input class="search" id="subjectSearch"
+                placeholder="Ders ara..." oninput="renderSubjects()">
+        </div>
+        <div class="subject-grid" id="subjectContainer"></div>
+    </div>
 
-    <section class="section about" id="hakkinda">
-        <div class="section-heading">
-            <h2>Eduverse Nedir?</h2>
+    <div id="topicScreen" class="hidden">
+        <button class="back-btn" onclick="showSubjects()">← Derslere Dön</button>
+        <div class="page-heading">
+            <h2 id="subjectTitle"></h2>
+            <p id="subjectDescription"></p>
+        </div>
+        <div class="topic-list" id="topicContainer"></div>
+    </div>
+
+    <div id="lessonScreen" class="hidden">
+        <button class="back-btn" onclick="showTopics()">← Konulara Dön</button>
+        <div id="lessonContent"></div>
+    </div>
+
+</div>
+</section>
+
+<section class="section about" id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>Eduverse Hakkında</h2>
         </div>
         <p>
-            Eduverse, öğrencilerin dersleri keşfedebileceği,
-            konu anlatımlarını okuyabileceği ve öğrendiklerini
-            mini testlerle pekiştirebileceği bir eğitim platformudur.
-            Amacımız öğrenmeyi herkes için daha erişilebilir ve eğlenceli
-            hâle getirmektir.
+            Eduverse, öğrencilerin dersleri daha anlaşılır ve eğlenceli
+            şekilde öğrenebilmesi için tasarlanan bir eğitim platformudur.
+            Konu anlatımları, örnekler ve testlerle öğrenme yolculuğunu
+            destekler.
         </p>
-    </section>
+    </div>
+</section>
 
 </main>
 
 <footer>
     <strong>Eduverse.</strong>
-    <p>© 2026 Eduverse | Öğrenmenin Yeni Evreni</p>
+    <p>Öğrenmenin Yeni Evreni</p>
+    <p>© 2026 Eduverse</p>
 </footer>
 
 <script>
 
-/* DERS VE KONU VERİLERİ */
+/* ------------------------------------------------
+   DERSLER VE SINIFLAR
+------------------------------------------------ */
 
-const subjects = [
+const gradeData = {
+1: [
+    ["turkce","📖","Türkçe","Okuma, yazma, sesler ve kelimeler."],
+    ["matematik","🔢","Matematik","Sayılar, işlemler ve şekiller."],
+    ["hayat","🌍","Hayat Bilgisi","Okul, aile, çevre ve yaşam."],
+    ["gorsel","🎨","Görsel Sanatlar","Renkler, çizgiler ve yaratıcılık."],
+    ["muzik","🎵","Müzik","Sesler, ritimler ve müzik."],
+    ["beden","⚽","Beden Eğitimi ve Oyun","Hareket, oyun ve iş birliği."]
+],
+2: [
+    ["turkce","📖","Türkçe","Okuma, yazma ve dil bilgisi."],
+    ["matematik","🔢","Matematik","Sayılar, işlemler ve problemler."],
+    ["hayat","🌍","Hayat Bilgisi","Aile, okul, toplum ve çevre."],
+    ["ingilizce","🇬🇧","İngilizce","Temel kelimeler ve günlük ifadeler."],
+    ["gorsel","🎨","Görsel Sanatlar","Renkler, şekiller ve tasarım."],
+    ["muzik","🎵","Müzik","Ritim ve müzik aletleri."],
+    ["beden","⚽","Beden Eğitimi ve Oyun","Hareket ve takım oyunları."]
+],
+3: [
+    ["turkce","📖","Türkçe","Okuma, yazma ve metinler."],
+    ["matematik","🔢","Matematik","İşlemler, problemler ve ölçme."],
+    ["hayat","🌍","Hayat Bilgisi","Toplum, çevre ve yaşam."],
+    ["ingilizce","🇬🇧","İngilizce","Kelime bilgisi ve basit cümleler."],
+    ["fen","🔬","Fen Bilimleri","Canlılar, madde ve doğa."],
+    ["gorsel","🎨","Görsel Sanatlar","Sanat ve tasarım."],
+    ["muzik","🎵","Müzik","Ritim, ses ve ezgiler."],
+    ["beden","⚽","Beden Eğitimi ve Oyun","Hareket ve spor."]
+],
+4: [
+    ["turkce","📖","Türkçe","Metinler, dil bilgisi ve anlatım."],
+    ["matematik","🔢","Matematik","İşlemler, kesirler ve geometri."],
+    ["fen","🔬","Fen Bilimleri","Canlılar, madde, ışık ve ses."],
+    ["sosyal","🗺️","Sosyal Bilgiler","Tarih, coğrafya ve toplum."],
+    ["ingilizce","🇬🇧","İngilizce","Günlük konuşmalar ve kelimeler."],
+    ["din","🤝","Din Kültürü ve Ahlak Bilgisi","Değerler ve ahlaki davranışlar."],
+    ["trafik","🚦","Trafik Güvenliği","Trafik kuralları ve güvenlik."],
+    ["vatandaslik","⚖️","İnsan Hakları, Vatandaşlık ve Demokrasi","Haklar, sorumluluklar ve demokrasi."],
+    ["gorsel","🎨","Görsel Sanatlar","Sanat ve tasarım."],
+    ["muzik","🎵","Müzik","Müzik ve ritim."],
+    ["beden","⚽","Beden Eğitimi ve Oyun","Hareket ve spor."]
+]
+};
 
-{
-    id: "turkce",
-    name: "Türkçe",
-    icon: "📖",
-    description: "Sesler, harfler, kelimeler ve okuma.",
-    lessons: [
-        {
-            title: "Sesleri Tanıyalım",
-            text: "Çevremizde birçok farklı ses duyarız. Kuşların ötmesi, zilin çalması ve insanların konuşması birer sestir. Konuşurken kullandığımız sesleri harflerle gösteririz.",
-            example: "A sesiyle başlayan kelimeler: Arı, araba, ağaç.",
-            question: "Aşağıdakilerden hangisi A sesiyle başlar?",
-            options: ["Masa", "Araba", "Kedi"],
-            answer: 1
-        },
-        {
-            title: "Hece ve Kelimeler",
-            text: "Kelimeler hecelerden oluşur. Bir kelimeyi söylerken ağzımızın her açılışında bir hece duyabiliriz.",
-            example: "Elma kelimesi el-ma şeklinde iki hecedir.",
-            question: "Kalem kelimesi kaç hecedir?",
-            options: ["Bir", "İki", "Üç"],
-            answer: 1
-        },
-        {
-            title: "Cümleler",
-            text: "Cümleler bir düşünceyi veya duyguyu anlatır. Cümleler büyük harfle başlar ve uygun noktalama işaretiyle biter.",
-            example: "Ben kitap okuyorum.",
-            question: "Hangisi doğru yazılmıştır?",
-            options: ["ben okula gittim", "Ben okula gittim.", "ben Okula gittim"],
-            answer: 1
-        },
-        {
-            title: "Noktalama İşaretleri",
-            text: "Noktalama işaretleri yazılarımızı daha anlaşılır hâle getirir. Nokta, soru işareti ve ünlem işareti bunlardan bazılarıdır.",
-            example: "Bugün hava güzel. Sen nasılsın? Yaşasın!",
-            question: "Soru cümlesinin sonuna hangisi gelir?",
-            options: ["Nokta", "Virgül", "Soru işareti"],
-            answer: 2
-        },
-        {
-            title: "Okuduğumuzu Anlayalım",
-            text: "Bir metni okurken anlatılanları anlamaya çalışırız. Metindeki kişileri, olayları ve yerleri bulabiliriz.",
-            example: "Ali parka gitti ve salıncakta oynadı. Ali'nin gittiği yer parktır.",
-            question: "Ali nereye gitti?",
-            options: ["Okula", "Parka", "Markete"],
-            answer: 1
-        }
-    ]
-},
+const topicData = {
+turkce: [
+    ["Sesler ve Harfler","Sesleri tanıma ve harflerle eşleştirme."],
+    ["Hece ve Kelimeler","Hece oluşturma ve kelime bilgisi."],
+    ["Cümleler","Cümle oluşturma ve noktalama."]
+],
+matematik: [
+    ["Sayılar","Sayıları tanıma ve karşılaştırma."],
+    ["İşlemler","Toplama ve çıkarma çalışmaları."],
+    ["Problemler","Günlük yaşamdan matematik problemleri."]
+],
+hayat: [
+    ["Okulum ve Ailem","Okul ve aile yaşamı."],
+    ["Sağlıklı Yaşam","Temizlik ve sağlıklı alışkanlıklar."],
+    ["Doğa ve Çevre","Çevremizi koruma."]
+],
+ingilizce: [
+    ["Greetings","Selamlaşma ve tanışma."],
+    ["Numbers and Colours","Sayılar ve renkler."],
+    ["Animals","Hayvanlar ve basit ifadeler."]
+],
+fen: [
+    ["Canlılar Dünyası","Canlıları ve yaşam alanlarını tanıma."],
+    ["Maddeyi Tanıyalım","Maddelerin özelliklerini inceleme."],
+    ["Çevremizdeki Kuvvet ve Enerji","Hareket ve enerjiye giriş."]
+],
+sosyal: [
+    ["Birey ve Toplum","Kimlik, aile ve toplumsal yaşam."],
+    ["Kültür ve Miras","Geçmişimiz ve kültürel değerler."],
+    ["Yaşadığımız Yer","Çevre ve harita bilgisi."]
+],
+gorsel: [
+    ["Renkler","Ana renkler ve renk karışımları."],
+    ["Şekiller","Temel şekiller ve çizimler."],
+    ["Yaratıcı Resimler","Hayal gücüyle tasarım."]
+],
+muzik: [
+    ["Sesleri Tanıyalım","Seslerin özellikleri."],
+    ["Ritim","Ritim ve tekrar."],
+    ["Müzik Aletleri","Müzik aletlerini tanıma."]
+],
+beden: [
+    ["Temel Hareketler","Yürüme, koşma ve denge."],
+    ["Takım Oyunları","İş birliği ve oyun kuralları."],
+    ["Sağlıklı Hareket","Güvenli hareket ve dinlenme."]
+],
+din: [
+    ["Güzel Davranışlar","Saygı, sevgi ve yardımlaşma."],
+    ["Değerlerimiz","Dürüstlük ve sorumluluk."],
+    ["Birlikte Yaşamak","Farklılıklara saygı."]
+],
+trafik: [
+    ["Trafik İşaretleri","Temel trafik işaretleri."],
+    ["Yaya Güvenliği","Yaya olarak güvenli davranışlar."],
+    ["Trafikte Sorumluluk","Trafik kurallarına uyma."]
+],
+vatandaslik: [
+    ["Haklarımız","Temel hak ve sorumluluklar."],
+    ["Demokrasi","Seçim, karar ve katılım."],
+    ["Birlikte Yaşam","Eşitlik ve saygı."]
+]
+};
 
-{
-    id: "matematik",
-    name: "Matematik",
-    icon: "🔢",
-    description: "Sayılar, işlemler ve geometrik şekiller.",
-    lessons: [
-        {
-            title: "Sayıları Tanıyalım",
-            text: "Sayılar nesnelerin kaç tane olduğunu anlamamıza yardımcı olur. Sayıları kullanarak çevremizdeki nesneleri sayabiliriz.",
-            example: "🍎 🍎 🍎 = 3 elma.",
-            question: "İki elmadan sonra hangi sayı gelir?",
-            options: ["1", "3", "5"],
-            answer: 1
-        },
-        {
-            title: "Sayıları Karşılaştıralım",
-            text: "Sayıları karşılaştırırken büyüktür, küçüktür ve eşittir işaretlerini kullanabiliriz.",
-            example: "5, 3'ten büyüktür. 2, 4'ten küçüktür.",
-            question: "Hangisi daha büyüktür?",
-            options: ["3", "7", "1"],
-            answer: 1
-        },
-        {
-            title: "Toplama İşlemi",
-            text: "Toplama, sayıları bir araya getirmektir. Toplama işleminde artı işaretini kullanırız.",
-            example: "2 + 3 = 5",
-            question: "4 + 3 kaç eder?",
-            options: ["6", "7", "8"],
-            answer: 1
-        },
-        {
-            title: "Çıkarma İşlemi",
-            text: "Çıkarma işleminde bir sayıdan başka bir sayıyı eksiltiriz.",
-            example: "5 - 2 = 3",
-            question: "8 - 3 kaç eder?",
-            options: ["4", "5", "6"],
-            answer: 1
-        },
-        {
-            title: "Geometrik Şekiller",
-            text: "Çevremizde kare, üçgen, daire ve dikdörtgen gibi şekiller görürüz.",
-            example: "Bir saatin yüzü genellikle daire şeklindedir.",
-            question: "Üç kenarı olan şekil hangisidir?",
-            options: ["Kare", "Daire", "Üçgen"],
-            answer: 2
-        },
-        {
-            title: "Örüntüler",
-            text: "Örüntüler belirli bir kurala göre tekrar eden şekil veya sayılardır.",
-            example: "🔴 🔵 🔴 🔵 🔴 ...",
-            question: "Kırmızı, mavi, kırmızı, mavi dizisinden sonra ne gelir?",
-            options: ["Kırmızı", "Yeşil", "Sarı"],
-            answer: 0
-        }
-    ]
-},
+/* ------------------------------------------------
+   10 SORULUK TEST SORU BANKALARI
+------------------------------------------------ */
 
-{
-    id: "hayat",
-    name: "Hayat Bilgisi",
-    icon: "🌍",
-    description: "Okul, aile, çevre ve günlük yaşam.",
-    lessons: [
-        {
-            title: "Ben ve Okulum",
-            text: "Okulumuzda öğretmenlerimiz ve arkadaşlarımızla birlikte öğreniriz. Okulda birbirimize saygılı davranmalı ve sınıf kurallarına uymalıyız.",
-            example: "Arkadaşımız konuşurken onu dikkatle dinleriz.",
-            question: "Sınıfta nasıl davranmalıyız?",
-            options: ["Arkadaşımızı dinlemeliyiz", "Bağırmalıyız", "Eşyaları kırmalıyız"],
-            answer: 0
-        },
-        {
-            title: "Ailemiz",
-            text: "Ailemiz bizim için önemlidir. Aile bireyleri birbirlerine sevgi ve saygı gösterir. Evde birbirimize yardım edebiliriz.",
-            example: "Sofrayı hazırlamaya yardım edebiliriz.",
-            question: "Aile içinde nasıl davranmalıyız?",
-            options: ["Saygılı ve yardımsever", "Kaba", "İlgisiz"],
-            answer: 0
-        },
-        {
-            title: "Sağlıklı Yaşam",
-            text: "Sağlıklı olmak için dengeli beslenmeli, yeterince dinlenmeli ve kişisel temizliğimize dikkat etmeliyiz.",
-            example: "Yemeklerden önce ellerimizi yıkamalıyız.",
-            question: "Hangisi temiz bir alışkanlıktır?",
-            options: ["Ellerimizi yıkamak", "Dişlerimizi hiç fırçalamamak", "Kirli su içmek"],
-            answer: 0
-        },
-        {
-            title: "Güvenliğimiz",
-            text: "Evde, okulda ve dışarıda güvenli davranmalıyız. Bilmediğimiz durumlarda güvendiğimiz bir yetişkinden yardım istemeliyiz.",
-            example: "Karşıdan karşıya geçerken yaya geçidini kullanırız.",
-            question: "Yolu nereden geçmeliyiz?",
-            options: ["Yaya geçidinden", "Araçların arasından", "Herhangi bir yerden"],
-            answer: 0
-        },
-        {
-            title: "Doğayı Koruyalım",
-            text: "Doğa, bitkiler ve hayvanlar yaşamımız için önemlidir. Çevremizi temiz tutmalı ve kaynakları dikkatli kullanmalıyız.",
-            example: "Kullanmadığımız zaman ışıkları kapatabiliriz.",
-            question: "Hangisi doğayı korumaya yardımcı olur?",
-            options: ["Çöpleri yere atmak", "Suyu gereksiz kullanmak", "Çöpleri çöp kutusuna atmak"],
-            answer: 2
-        }
-    ]
-},
+const questionBanks = {
 
-{
-    id: "sanat",
-    name: "Görsel Sanatlar",
-    icon: "🎨",
-    description: "Renkler, çizgiler ve yaratıcılık.",
-    lessons: [
-        {
-            title: "Ana Renkler",
-            text: "Resim çalışmalarında kırmızı, sarı ve mavi gibi temel renkleri tanırız. Bu renkleri kullanarak yeni renkler oluşturabiliriz.",
-            example: "Sarı ve mavi boyayı karıştırdığımızda yeşil elde ederiz.",
-            question: "Sarı ve mavi karışınca hangi renk oluşur?",
-            options: ["Yeşil", "Mor", "Turuncu"],
-            answer: 0
-        },
-        {
-            title: "Sıcak ve Soğuk Renkler",
-            text: "Bazı renkler bize sıcaklığı, bazı renkler ise serinliği hatırlatır. Kırmızı ve turuncu sıcak renklerdendir. Mavi ve yeşil soğuk renklerdendir.",
-            example: "Güneşi sarı ve turuncu renklerle çizebiliriz.",
-            question: "Hangisi sıcak renktir?",
-            options: ["Mavi", "Kırmızı", "Yeşil"],
-            answer: 1
-        },
-        {
-            title: "Şekiller Çizelim",
-            text: "Resimlerimizde kare, daire, üçgen ve dikdörtgen gibi şekiller kullanabiliriz.",
-            example: "Bir evin çatısını üçgen şeklinde çizebiliriz.",
-            question: "Dört eşit kenarı olan şekil hangisidir?",
-            options: ["Kare", "Daire", "Üçgen"],
-            answer: 0
-        }
-    ]
-},
+turkce: [
+["Cümleler hangi harfle başlar?",["Küçük harfle","Büyük harfle","Rakamla"],1],
+["Soru cümlesinin sonuna ne konur?",["Nokta","Virgül","Soru işareti"],2],
+["Hangisi bir hecedir?",["Kal","Kalem","Kitaplık"],0],
+["Hangisi özel isimdir?",["şehir","Ankara","okul"],1],
+["Hangisi zıt anlamlıdır?",["Büyük-küçük","Güzel-hoş","Ev-konut"],0],
+["Hangisi bir noktalama işaretidir?",["Soru işareti","Harf","Hece"],0],
+["'Mutlu' kelimesinin zıt anlamı hangisidir?",["Neşeli","Üzgün","Sevinçli"],1],
+["Hangisi bir cümledir?",["Güzel bir","Ben kitap okuyorum.","Mavi kalem"],1],
+["'Kitap' kelimesi kaç harften oluşur?",["4","5","6"],1],
+["Bir metni okuduktan sonra ne yapmalıyız?",["Anlamaya çalışmalıyız","Hemen kapatmalıyız","Kelimeleri karıştırmalıyız"],0]
+],
 
-{
-    id: "muzik",
-    name: "Müzik",
-    icon: "🎵",
-    description: "Sesler, ritimler ve müzik aletleri.",
-    lessons: [
-        {
-            title: "Sesleri Dinleyelim",
-            text: "Çevremizde ince, kalın, yüksek ve alçak sesler bulunur. Müzik yaparken farklı sesleri kullanırız.",
-            example: "Kuş sesi ile davul sesi birbirinden farklıdır.",
-            question: "Hangisi bir müzik aletidir?",
-            options: ["Davul", "Masa", "Kalem"],
-            answer: 0
-        },
-        {
-            title: "Ritim Nedir?",
-            text: "Ritim, seslerin belirli bir düzende tekrarlanmasıdır. El çırparak ritim oluşturabiliriz.",
-            example: "Alkış - alkış - bekle - alkış.",
-            question: "Ritim neyle ilgilidir?",
-            options: ["Seslerin düzeniyle", "Yemek yapmakla", "Resim boyamakla"],
-            answer: 0
-        },
-        {
-            title: "Müzik Aletleri",
-            text: "Müzik aletleri farklı sesler çıkarmamızı sağlar. Piyano, gitar, keman ve davul müzik aletlerine örnektir.",
-            example: "Piyanoda tuşlara basarak ses çıkarırız.",
-            question: "Hangisi telli bir müzik aletidir?",
-            options: ["Davul", "Gitar", "Flüt"],
-            answer: 1
-        }
-    ]
-},
+matematik: [
+["5 + 3 kaç eder?",["7","8","9"],1],
+["10 - 4 kaç eder?",["5","6","7"],1],
+["Hangisi daha büyüktür?",["12","8","5"],0],
+["Bir üçgenin kaç kenarı vardır?",["2","3","4"],1],
+["2, 4, 6, 8 dizisinde sıradaki sayı nedir?",["9","10","12"],1],
+["20'nin yarısı kaçtır?",["5","10","15"],1],
+["Bir düzinede kaç tane vardır?",["10","12","15"],1],
+["Bir saatte kaç dakika vardır?",["30","60","100"],1],
+["7 + 6 kaç eder?",["12","13","14"],1],
+["15 - 7 kaç eder?",["7","8","9"],1]
+],
 
-{
-    id: "beden",
-    name: "Beden Eğitimi ve Oyun",
-    icon: "⚽",
-    description: "Hareket, oyun ve iş birliği.",
-    lessons: [
-        {
-            title: "Temel Hareketler",
-            text: "Yürümek, koşmak, zıplamak ve dengede durmak temel hareketlerdir. Hareket ederken çevremize dikkat etmeliyiz.",
-            example: "Oyun alanında arkadaşlarımızla aramızda yeterli mesafe bırakırız.",
-            question: "Hangisi temel bir harekettir?",
-            options: ["Zıplamak", "Uyumak", "Kitap okumak"],
-            answer: 0
-        },
-        {
-            title: "Takım Oyunları",
-            text: "Takım oyunlarında arkadaşlarımızla birlikte hareket ederiz. Kurallara uymak ve birbirimize saygı göstermek önemlidir.",
-            example: "Bir oyun sırasında arkadaşlarımızla paslaşabiliriz.",
-            question: "Takım oyununda ne yapmalıyız?",
-            options: ["Kurallara uymalıyız", "Arkadaşlarımızı dışlamalıyız", "Tartışmalıyız"],
-            answer: 0
-        },
-        {
-            title: "Oyun Kuralları",
-            text: "Oyun kuralları herkesin güvenli ve adil şekilde oynamasına yardımcı olur. Oyuna katılan herkes kurallara uymalıdır.",
-            example: "Oyun sırasını beklemek ve arkadaşlarımızı dinlemek önemlidir.",
-            question: "Oyun sırasında ne yapmalıyız?",
-            options: ["Sıramızı beklemeliyiz", "Kuralları bozmalıyız", "Arkadaşlarımızı itmeliyiz"],
-            answer: 0
-        }
-    ]
-}
+hayat: [
+["Okulda arkadaşlarımıza nasıl davranmalıyız?",["Saygılı","Kaba","İlgisiz"],0],
+["Yemeklerden önce ne yapmalıyız?",["Ellerimizi yıkamalıyız","Koşmalıyız","Uyumalıyız"],0],
+["Doğayı korumak için ne yapmalıyız?",["Çöpü yere atmalıyız","Suyu boşa akıtmalıyız","Çöpleri kutuya atmalıyız"],2],
+["Acil bir durumda kimden yardım istemeliyiz?",["Güvendiğimiz yetişkinden","Tanımadığımız herkesten","Hiç kimseden"],0],
+["Sağlıklı beslenmede hangisi önemlidir?",["Çeşitli besinler","Sadece şeker","Sadece cips"],0],
+["Trafikte karşıdan karşıya nereden geçmeliyiz?",["Yaya geçidinden","Araçların arasından","Her yerden"],0],
+["Evde nasıl davranmalıyız?",["Yardımlaşmalıyız","Eşyaları kırmalıyız","Bağırmalıyız"],0],
+["Bitkilerin büyümesi için hangisi gereklidir?",["Su ve ışık","Plastik","Taş"],0],
+["Arkadaşımız konuşurken ne yapmalıyız?",["Dinlemeliyiz","Sözünü kesmeliyiz","Bağırmalıyız"],0],
+["Dişlerimizi temiz tutmak için ne yapmalıyız?",["Düzenli fırçalamalıyız","Hiç temizlememeliyiz","Şeker yemeliyiz"],0]
+],
 
-];
+ingilizce: [
+["'Hello' ne demektir?",["Merhaba","Güle güle","Teşekkürler"],0],
+["'Thank you' ne demektir?",["Lütfen","Teşekkür ederim","Günaydın"],1],
+["'Apple' hangi meyvedir?",["Elma","Armut","Muz"],0],
+["'Blue' hangi renktir?",["Kırmızı","Mavi","Sarı"],1],
+["'Cat' ne demektir?",["Köpek","Kuş","Kedi"],2],
+["'One' hangi sayıdır?",["Bir","İki","Üç"],0],
+["'Good morning' ne demektir?",["İyi geceler","Günaydın","İyi akşamlar"],1],
+["'Book' ne demektir?",["Kitap","Kalem","Masa"],0],
+["'Dog' ne demektir?",["Kedi","Köpek","Balık"],1],
+["'Goodbye' ne demektir?",["Merhaba","Günaydın","Hoşça kal"],2]
+],
 
-/* UYGULAMA DURUMU */
+fen: [
+["Bitkilerin büyümesi için hangisi gereklidir?",["Su","Plastik","Cam"],0],
+["Hangisi canlıdır?",["Taş","Kedi","Masa"],1],
+["Dünya'nın doğal uydusu hangisidir?",["Güneş","Mars","Ay"],2],
+["Hangisi ışık kaynağıdır?",["Güneş","Kitap","Toprak"],0],
+["Suyun donmasıyla ne oluşur?",["Buhar","Buz","Yağmur"],1],
+["Hangisi duyu organımızdır?",["Kulak","Masa","Kalem"],0],
+["İnsanlar hangi organıyla nefes alır?",["Akciğer","Mide","Diz"],0],
+["Hangisi bir enerji kaynağıdır?",["Güneş","Defter","Silgi"],0],
+["Ses hangi yolla yayılabilir?",["Titreşimle","Renkle","Kokuyla"],0],
+["Hayvanların yaşam alanına ne denir?",["Habitat","Kitaplık","Sınıf"],0]
+],
 
-let currentSubject = null;
-let currentLesson = null;
+sosyal: [
+["Türkiye'nin başkenti neresidir?",["İstanbul","Ankara","İzmir"],1],
+["Haritalar neyi gösterir?",["Yerleri ve konumları","Sadece hayvanları","Sadece yemekleri"],0],
+["Geçmişte yaşanan olayları inceleyen alan hangisidir?",["Tarih","Matematik","Müzik"],0],
+["Bir toplumda birlikte yaşamak için ne önemlidir?",["Saygı","Kavga","Kuralsızlık"],0],
+["Türkiye'nin bayrağında hangi renkler vardır?",["Kırmızı ve beyaz","Mavi ve yeşil","Sarı ve siyah"],0],
+["Aşağıdakilerden hangisi doğal çevre unsurudur?",["Dağ","Köprü","Bina"],0],
+["Yerel yönetimlerde belediyenin görevlerinden biri nedir?",["Şehir hizmetleri","Gezegenleri keşfetmek","Kitap yazmak"],0],
+["Kültürel miras neyi anlatır?",["Geçmişten kalan değerleri","Günlük hava durumunu","Sadece sporları"],0],
+["Yön bulmada kullanılan araç hangisidir?",["Pusula","Termometre","Cetvel"],0],
+["Toplumsal kurallar neden önemlidir?",["Düzeni sağlamak için","Tartışmayı artırmak için","Kimseyi dinlememek için"],0]
+],
 
-const completed = new Set(
-    JSON.parse(localStorage.getItem("eduverseCompleted") || "[]")
+general: [
+["Ana renklerden biri hangisidir?",["Mavi","Kahverengi","Gri"],0],
+["Sarı ve mavi karışınca hangi renk oluşur?",["Yeşil","Mor","Siyah"],0],
+["Hangisi telli bir müzik aletidir?",["Gitar","Davul","Flüt"],0],
+["Ritim neyle ilgilidir?",["Seslerin düzeniyle","Yemekle","Boyayla"],0],
+["Takım oyunlarında ne önemlidir?",["İş birliği","Dışlamak","Kuralsızlık"],0],
+["Hangisi bir müzik aletidir?",["Piyano","Masa","Kalem"],0],
+["Bir resimde hangi araç kullanılabilir?",["Boya kalemi","Çatal","Anahtar"],0],
+["Oyun oynarken ne yapmalıyız?",["Kurallara uymalıyız","Arkadaşlarımızı itmeliyiz","Tartışmalıyız"],0],
+["Hangisi sıcak renklerden biridir?",["Turuncu","Mavi","Yeşil"],0],
+["Hareket ederken neye dikkat etmeliyiz?",["Çevremize ve güvenliğe","Sadece hızımıza","Hiçbir şeye"],0]
+],
+
+traffic: [
+["Yaya geçidini kimler kullanır?",["Yayalar","Sadece bisikletler","Sadece arabalar"],0],
+["Trafik ışığında kırmızı ne anlama gelir?",["Dur","Geç","Hızlan"],0],
+["Kaldırım kimler içindir?",["Yayalar","Uçaklar","Gemiler"],0],
+["Araçta emniyet kemeri neden takılır?",["Güvenlik için","Süs için","Daha hızlı gitmek için"],0],
+["Trafik işaretleri ne sağlar?",["Düzen ve güvenlik","Gürültü","Oyun"],0],
+["Karşıdan karşıya geçerken ne yapmalıyız?",["Önce iki yöne bakmalıyız","Koşarak geçmeliyiz","Telefona bakmalıyız"],0],
+["Bisiklet kullanırken ne önemlidir?",["Güvenlik kuralları","Yarışmak","Ellerini bırakmak"],0],
+["Okul servisinde nasıl davranmalıyız?",["Güvenli ve sakin","Ayakta zıplayarak","Şoförü rahatsız ederek"],0],
+["Trafikte görev yapan kişiye örnek hangisidir?",["Trafik polisi","Aşçı","Ressam"],0],
+["Trafik kurallarına kimler uymalıdır?",["Herkes","Sadece sürücüler","Sadece yayalar"],0]
+],
+
+citizenship: [
+["Haklarımızın yanında neyi de yerine getirmeliyiz?",["Sorumluluklarımızı","Sadece isteklerimizi","Kuralsızlığı"],0],
+["Demokratik karar verirken ne önemlidir?",["Farklı görüşleri dinlemek","Kimseyi dinlememek","Zor kullanmak"],0],
+["Herkesin fikrine nasıl yaklaşmalıyız?",["Saygıyla","Alay ederek","Bağırarak"],0],
+["Seçimlerde oy kullanmak neyle ilgilidir?",["Katılımla","Kuralsızlıkla","Sessizlikle"],0],
+["Eşitlik ne anlama gelir?",["Herkese adil davranmak","Ayrımcılık yapmak","Kimseyi dinlememek"],0],
+["Bir anlaşmazlıkta ne yapmalıyız?",["Konuşarak çözüm aramalıyız","Kavga etmeliyiz","Bağırmalıyız"],0],
+["Ortak alanları nasıl kullanmalıyız?",["Özenli ve temiz","İstediğimiz gibi kirleterek","Zarar vererek"],0],
+["Sınıf kararlarında ne önemlidir?",["Katılım ve saygı","Tek kişinin her kararı vermesi","Arkadaşları dışlamak"],0],
+["Sorumluluk sahibi kişi ne yapar?",["Görevlerini yerine getirir","Her şeyi başkasına bırakır","Kuralları bozar"],0],
+["Farklılıklara nasıl davranmalıyız?",["Saygı göstermeliyiz","Dışlamalıyız","Alay etmeliyiz"],0]
+],
+
+values: [
+["Dürüstlük ne demektir?",["Doğruyu söylemek","Yalan söylemek","Başkalarını kandırmak"],0],
+["Yardımlaşma nasıl bir davranıştır?",["Olumlu","Zararlı","Gereksiz"],0],
+["Bir arkadaşımız üzgünse ne yapabiliriz?",["Onu dinleyebiliriz","Onunla alay edebiliriz","Onu dışlayabiliriz"],0],
+["Verdiğimiz sözü tutmak hangi davranıştır?",["Sorumluluk","Dikkatsizlik","Saygısızlık"],0],
+["Teşekkür etmek neyi gösterir?",["Nezaketi","Öfkeyi","Kabalığı"],0],
+["Farklılıklara nasıl yaklaşmalıyız?",["Saygıyla","Alay ederek","Dışlayarak"],0],
+["Ortak eşyaları nasıl kullanmalıyız?",["Özenli","Dikkatsiz","Zarar vererek"],0],
+["Bir hata yaptığımızda ne yapmalıyız?",["Kabul edip düzeltmeye çalışmalıyız","Başkalarını suçlamalıyız","Gizlemeliyiz"],0],
+["Sabırlı olmak ne demektir?",["Beklemeyi ve sakin kalmayı bilmek","Bağırmak","Acele etmek"],0],
+["İyi bir arkadaş nasıl davranır?",["Destekleyici ve saygılı","Kaba ve kırıcı","Dışlayıcı"],0]
+]
+};
+
+/* ------------------------------------------------
+   UYGULAMA
+------------------------------------------------ */
+
+let currentGrade=1;
+let currentSubject=null;
+let currentTopic=0;
+let quizSubmitted=false;
+
+const completed=new Set(
+    JSON.parse(localStorage.getItem("eduverseProgress")||"[]")
 );
 
-function saveProgress() {
-    localStorage.setItem(
-        "eduverseCompleted",
-        JSON.stringify([...completed])
-    );
-    updateProgress();
-}
-
-function totalLessons() {
-    return subjects.reduce(
-        (total, subject) => total + subject.lessons.length, 0
-    );
-}
-
-function updateProgress() {
-    const total = totalLessons();
-    const count = completed.size;
-    const percentage = total ? Math.round(count / total * 100) : 0;
-
-    document.getElementById("progressText").textContent =
-        count + " / " + total + " konu tamamlandı (" + percentage + "%)";
-
-    document.getElementById("progressFill").style.width =
-        percentage + "%";
-}
-
-/* ANA SAYFA VE EĞİTİM EKRANLARI */
-
-function goHome() {
-    document.getElementById("home").style.display = "block";
-    document.getElementById("subjectScreen").classList.remove("hidden");
-    document.getElementById("topicScreen").classList.add("hidden");
-    document.getElementById("lessonScreen").classList.add("hidden");
-    window.scrollTo(0, 0);
-}
-
-function openEducation() {
-    document.getElementById("egitim").scrollIntoView({
-        behavior: "smooth"
+function getAllTopics(){
+    let all=[];
+    Object.keys(gradeData).forEach(grade=>{
+        gradeData[grade].forEach(subject=>{
+            const topics=topicData[subject[0]]||[];
+            topics.forEach((topic,index)=>{
+                all.push(grade+"-"+subject[0]+"-"+index);
+            });
+        });
     });
+    return all;
 }
 
-function showSubjects() {
-    document.getElementById("subjectScreen").classList.remove("hidden");
-    document.getElementById("topicScreen").classList.add("hidden");
-    document.getElementById("lessonScreen").classList.add("hidden");
-    currentSubject = null;
+function updateProgress(){
+    const total=getAllTopics().length;
+    const count=completed.size;
+    const percent=Math.round(count/total*100);
+    document.getElementById("progressText").textContent=percent+"%";
+    document.getElementById("progressFill").style.width=percent+"%";
+    document.getElementById("progressDetail").textContent=
+        count+" / "+total+" konu tamamlandı.";
 }
 
-function renderSubjects() {
-    const search = document.getElementById("searchInput")
-        .value.toLocaleLowerCase("tr");
+function hideScreens(){
+    ["gradeScreen","subjectScreen","topicScreen","lessonScreen"]
+    .forEach(id=>document.getElementById(id).classList.add("hidden"));
+}
 
-    const container = document.getElementById("subjectContainer");
+function goHome(){
+    hideScreens();
+    document.getElementById("gradeScreen").classList.remove("hidden");
+    window.scrollTo(0,0);
+}
 
-    const filtered = subjects.filter(subject => {
-        const subjectMatch =
-            subject.name.toLocaleLowerCase("tr").includes(search);
+function goAcademy(){
+    document.getElementById("academy").scrollIntoView({behavior:"smooth"});
+}
 
-        const lessonMatch = subject.lessons.some(lesson =>
-            lesson.title.toLocaleLowerCase("tr").includes(search)
-        );
+function showGrades(){
+    hideScreens();
+    document.getElementById("gradeScreen").classList.remove("hidden");
+}
 
-        return subjectMatch || lessonMatch;
-    });
-
-    if (!filtered.length) {
-        container.innerHTML =
-            '<div class="empty-message">Aradığın ders veya konu bulunamadı.</div>';
-        return;
-    }
-
-    container.innerHTML = filtered.map(subject => `
-        <div class="subject-card" onclick="openSubject('${subject.id}')">
-            <div class="subject-icon">${subject.icon}</div>
-            <h3>${subject.name}</h3>
-            <p>${subject.description}</p>
-            <p>${subject.lessons.length} konu</p>
-            <button>Derse Git →</button>
+function renderGrades(){
+    const container=document.getElementById("gradeContainer");
+    container.innerHTML=[1,2,3,4].map(grade=>`
+        <div class="grade-card" onclick="openGrade(${grade})">
+            <div class="grade-number">0${grade}</div>
+            <h3>${grade}. Sınıf</h3>
+            <p>${gradeData[grade].length} ders seni bekliyor.</p>
+            <button class="small-btn">Sınıfı Aç →</button>
         </div>
     `).join("");
 }
 
-function openSubject(id) {
-    currentSubject = subjects.find(subject => subject.id === id);
-
-    if (!currentSubject) return;
-
-    document.getElementById("subjectScreen").classList.add("hidden");
-    document.getElementById("topicScreen").classList.remove("hidden");
-    document.getElementById("lessonScreen").classList.add("hidden");
-
-    document.getElementById("topicTitle").textContent =
-        currentSubject.icon + " " + currentSubject.name;
-
-    document.getElementById("topicDescription").textContent =
-        currentSubject.description;
-
-    const container = document.getElementById("topicContainer");
-
-    container.innerHTML = currentSubject.lessons.map((lesson, index) => {
-        const key = currentSubject.id + "-" + index;
-        const isDone = completed.has(key);
-
-        return `
-            <div class="lesson-item">
-                <div>
-                    <h3>${index + 1}. ${lesson.title}</h3>
-                    <p>${isDone ? "✓ Tamamlandı" : "Konu anlatımı ve mini test"}</p>
-                </div>
-                <button onclick="openLesson(${index})">
-                    ${isDone ? "Tekrar Et" : "Öğren →"}
-                </button>
-            </div>
-        `;
-    }).join("");
-
-    document.getElementById("topicScreen").scrollIntoView({
-        behavior: "smooth"
-    });
+function openGrade(grade){
+    currentGrade=grade;
+    hideScreens();
+    document.getElementById("subjectScreen").classList.remove("hidden");
+    document.getElementById("gradeTitle").textContent=grade+". Sınıf Dersleri";
+    document.getElementById("subjectSearch").value="";
+    renderSubjects();
+    goAcademy();
 }
 
-/* KONU ANLATIMI */
+function renderSubjects(){
+    const search=document.getElementById("subjectSearch")
+        .value.toLocaleLowerCase("tr");
 
-function openLesson(index) {
-    currentLesson = index;
+    const subjects=gradeData[currentGrade].filter(subject=>
+        subject[2].toLocaleLowerCase("tr").includes(search)
+    );
 
-    const lesson = currentSubject.lessons[index];
+    document.getElementById("subjectContainer").innerHTML=
+        subjects.map(subject=>`
+        <div class="subject-card" onclick="openSubject('${subject[0]}')">
+            <div class="subject-icon">${subject[1]}</div>
+            <h3>${subject[2]}</h3>
+            <p>${subject[3]}</p>
+            <button class="small-btn">Dersin Konuları →</button>
+        </div>
+    `).join("");
+}
 
-    document.getElementById("topicScreen").classList.add("hidden");
+function showSubjects(){
+    hideScreens();
+    document.getElementById("subjectScreen").classList.remove("hidden");
+}
+
+function openSubject(id){
+    currentSubject=id;
+    const subject=gradeData[currentGrade].find(item=>item[0]===id);
+    const topics=topicData[id]||[];
+
+    hideScreens();
+    document.getElementById("topicScreen").classList.remove("hidden");
+    document.getElementById("subjectTitle").textContent=subject[1]+" "+subject[2];
+    document.getElementById("subjectDescription").textContent=subject[3];
+
+    document.getElementById("topicContainer").innerHTML=
+        topics.map((topic,index)=>{
+            const key=currentGrade+"-"+id+"-"+index;
+            const done=completed.has(key);
+
+            return `
+            <div class="topic-card">
+                <div>
+                    <h3>${index+1}. ${topic[0]}</h3>
+                    <p>${topic[1]}</p>
+                    ${done?'<span class="done-label">✓ Tamamlandı</span>':''}
+                </div>
+                <button class="small-btn" onclick="openTopic(${index})">
+                    ${done?"Tekrar Et":"Konuyu Öğren →"}
+                </button>
+            </div>`;
+        }).join("");
+
+    goAcademy();
+}
+
+function showTopics(){
+    openSubject(currentSubject);
+}
+
+function openTopic(index){
+    currentTopic=index;
+    const topic=topicData[currentSubject][index];
+    const subject=gradeData[currentGrade].find(item=>item[0]===currentSubject);
+
+    hideScreens();
     document.getElementById("lessonScreen").classList.remove("hidden");
 
-    document.getElementById("lessonContent").innerHTML = `
+    const content=document.getElementById("lessonContent");
+
+    content.innerHTML=`
         <div class="lesson-panel">
-            <h2>${lesson.title}</h2>
+            <p style="color:var(--primary);font-weight:800">
+                ${currentGrade}. Sınıf / ${subject[2]}
+            </p>
+            <h2>${topic[0]}</h2>
+            <p>${topic[1]}</p>
 
             <h3>📘 Konu Anlatımı</h3>
-            <p>${lesson.text}</p>
+            <p>${getExplanation(currentSubject,index)}</p>
 
-            <div class="example-box">
-                <strong>💡 Örnek:</strong>
-                <p>${lesson.example}</p>
+            <div class="lesson-example">
+                <strong>💡 Hatırlayalım</strong>
+                <p>${getExample(currentSubject,index)}</p>
             </div>
 
             <h3>🎯 Öğrenme İpucu</h3>
             <p>
                 Konuyu kendi cümlelerinle anlatmayı dene.
-                Ardından mini testi çözerek öğrendiklerini kontrol et.
+                Hazır olduğunda 10 soruluk mini teste geçebilirsin.
             </p>
-        </div>
-
-        <div class="quiz-box">
-            <h2>🧠 Mini Test</h2>
-            <p class="quiz-question">${lesson.question}</p>
-
-            <div id="quizOptions">
-                ${lesson.options.map((option, i) => `
-                    <label class="quiz-option">
-                        <input type="radio" name="answer" value="${i}">
-                        ${option}
-                    </label>
-                `).join("")}
-            </div>
-
-            <button class="action-button" onclick="checkAnswer()">
-                Cevabı Kontrol Et
+            <button class="action-btn" onclick="startQuiz()">
+                10 Soruluk Teste Başla →
             </button>
-
-            <p class="quiz-result" id="quizResult"></p>
         </div>
     `;
-
-    document.getElementById("lessonScreen").scrollIntoView({
-        behavior: "smooth"
-    });
+    goAcademy();
 }
 
-/* TEST KONTROLÜ */
+function getExplanation(id,index){
+    const explanations={
+        turkce:[
+            "Harfler, sesleri yazıyla göstermemizi sağlar. Kelimeler harflerden, cümleler ise kelimelerden oluşur. Okurken kelimeleri doğru seslendirmeye ve metnin anlamını kavramaya çalışırız.",
+            "Hece, kelimelerin ses parçalarından biridir. Kelimeleri hecelerine ayırmak okumayı ve yazmayı kolaylaştırır.",
+            "Cümleler duygu, düşünce ve bilgileri anlatır. Cümle kurarken kelimeleri anlamlı bir sıraya dizeriz."
+        ],
+        matematik:[
+            "Sayılar miktarları belirtir. Sayıları sıralayabilir, karşılaştırabilir ve nesneleri saymak için kullanabiliriz.",
+            "Toplama birleştirme, çıkarma ise eksiltme işlemidir. İşlemleri günlük hayattaki örneklerle anlayabiliriz.",
+            "Problemlerde önce verilen bilgileri, sonra bizden isteneni belirleriz. Ardından uygun işlemi seçeriz."
+        ],
+        hayat:[
+            "Okul ve aile yaşamımızda sorumluluklarımız vardır. Birbirimizi dinlemek, yardımlaşmak ve kurallara uymak birlikte yaşamayı kolaylaştırır.",
+            "Sağlıklı yaşam için dengeli beslenmek, temizlik alışkanlıkları edinmek ve yeterince dinlenmek önemlidir.",
+            "Doğal çevremizde bitkiler, hayvanlar, su ve toprak bulunur. Kaynakları dikkatli kullanarak çevremizi koruyabiliriz."
+        ],
+        ingilizce:[
+            "İngilizcede insanlarla tanışırken selamlaşma ifadeleri kullanırız. Hello merhaba, goodbye hoşça kal anlamına gelir.",
+            "İngilizcede sayılar ve renkler günlük konuşmalarda sıkça kullanılır. Kelimeleri tekrar ederek öğrenebiliriz.",
+            "Hayvanların İngilizce adlarını öğrenmek kelime bilgimizi geliştirir. Cat kedi, dog köpek demektir."
+        ],
+        fen:[
+            "Canlıların yaşamak için suya, besine ve uygun çevre koşullarına ihtiyacı vardır. Bitkiler ve hayvanlar canlılara örnektir.",
+            "Çevremizde katı, sıvı ve gaz maddeler bulunur. Maddeleri gözlemleyerek özelliklerini karşılaştırabiliriz.",
+            "Hareket, ışık, ses ve enerji günlük yaşamımızın parçasıdır. Bunları gözlemleyerek bilimsel sorular sorabiliriz."
+        ],
+        sosyal:[
+            "İnsanlar aile, okul ve toplum içinde yaşar. Birlikte yaşarken sorumluluklarımızı yerine getirmek ve başkalarına saygı göstermek önemlidir.",
+            "Kültürel miras, geçmişten günümüze aktarılan gelenekleri, eserleri ve değerleri kapsar.",
+            "Yaşadığımız yeri tanımak için çevremizi gözlemler, haritalardan ve yönlerden yararlanırız."
+        ],
+        default:[
+            "Bu konuda çevremizdeki örnekleri gözlemleyerek yeni bilgiler öğrenebiliriz. Dikkatli olmak, denemek ve öğrendiklerimizi uygulamak önemlidir.",
+            "Öğrendiklerimizi günlük yaşamda kullanabiliriz. Örnekleri incelemek konuyu daha iyi anlamamıza yardımcı olur.",
+            "Bu konuyu tekrar ederek ve farklı örnekler oluşturarak pekiştirebiliriz."
+        ]
+    };
+    const list=explanations[id]||explanations.default;
+    return list[index%list.length];
+}
 
-function checkAnswer() {
-    const lesson = currentSubject.lessons[currentLesson];
+function getExample(id,index){
+    const examples={
+        turkce:["'Arı' kelimesi A harfiyle başlar. 'Arı bal yapar.' bir cümledir.","'Kalem' kelimesi ka-lem şeklinde iki hecedir.","'Bugün hava güzel.' bir cümledir."],
+        matematik:["3 elma ile 2 elmayı birleştirirsek 5 elmamız olur: 3+2=5.","8 kalemden 3 kalem çıkarırsak 5 kalem kalır: 8-3=5.","Bir sepette 4 elma, diğerinde 3 elma varsa toplam 7 elma vardır."],
+        hayat:["Sınıfta arkadaşımız konuşurken onu dinlemek saygılı bir davranıştır.","Yemeklerden önce ellerimizi yıkamak temizliğe örnektir.","Atıkları uygun kutulara ayırmak çevreyi korumaya yardımcı olur."],
+        ingilizce:["Hello! My name is Ali. = Merhaba! Benim adım Ali.","Red kırmızı, blue mavi, green yeşil demektir.","Cat kedi, dog köpek, bird kuş demektir."],
+        fen:["Bir bitkiyi sulamak ve yeterli ışık almasını sağlamak büyümesine yardımcı olur.","Buz katı, su sıvı, su buharı gaz hâline örnektir.","Güneş doğal bir ışık ve enerji kaynağıdır."],
+        sosyal:["Sınıf kurallarına uymak ortak yaşamı kolaylaştırır.","Tarihi yapılar geçmişten kalan kültürel miras örnekleridir.","Haritada bir yerin konumunu inceleyebiliriz."]
+    };
+    const list=examples[id]||[
+        "Gözlem yaparak ve örnekleri inceleyerek konuyu öğrenebiliriz.",
+        "Öğrendiklerimizi günlük yaşamda kullanabiliriz.",
+        "Kurallara uymak ve dikkatli olmak önemlidir."
+    ];
+    return list[index%list.length];
+}
 
-    const selected = document.querySelector(
-        'input[name="answer"]:checked'
-    );
+/* ------------------------------------------------
+   TEST SİSTEMİ - HER TEST 10 SORU
+------------------------------------------------ */
 
-    const result = document.getElementById("quizResult");
+function getQuestionBank(){
+    if(currentSubject==="turkce")return questionBanks.turkce;
+    if(currentSubject==="matematik")return questionBanks.matematik;
+    if(currentSubject==="hayat")return questionBanks.hayat;
+    if(currentSubject==="ingilizce")return questionBanks.ingilizce;
+    if(currentSubject==="fen")return questionBanks.fen;
+    if(currentSubject==="sosyal")return questionBanks.sosyal;
+    if(currentSubject==="trafik")return questionBanks.traffic;
+    if(currentSubject==="vatandaslik")return questionBanks.citizenship;
+    if(currentSubject==="din")return questionBanks.values;
+    return questionBanks.general;
+}
 
-    if (!selected) {
-        result.textContent = "Önce bir cevap seçmelisin.";
-        result.style.color = "#d97706";
+function startQuiz(){
+    quizSubmitted=false;
+    const questions=getQuestionBank();
+
+    const content=document.getElementById("lessonContent");
+
+    content.innerHTML=`
+        <div class="quiz-panel">
+            <div class="quiz-header">
+                <h2>🧠 Mini Test</h2>
+                <span class="quiz-count">10 Soru</span>
+            </div>
+            <p style="color:var(--muted);margin-bottom:20px">
+                Her soru 10 puandır. Tüm soruları cevapladıktan sonra testi bitir.
+            </p>
+
+            <form id="quizForm">
+                ${questions.slice(0,10).map((q,index)=>`
+                    <div class="question-card">
+                        <h3>${index+1}. ${q[0]}</h3>
+                        ${q[1].map((option,optionIndex)=>`
+                            <label class="option">
+                                <input type="radio"
+                                    name="question${index}"
+                                    value="${optionIndex}">
+                                ${String.fromCharCode(65+optionIndex)}.
+                                ${option}
+                            </label>
+                        `).join("")}
+                    </div>
+                `).join("")}
+
+                <button type="button" class="action-btn"
+                    onclick="submitQuiz()">
+                    Testi Bitir ve Puanımı Gör
+                </button>
+            </form>
+
+            <div class="quiz-result" id="quizResult"></div>
+        </div>
+    `;
+    goAcademy();
+}
+
+function submitQuiz(){
+    if(quizSubmitted)return;
+
+    const questions=getQuestionBank();
+    let score=0;
+    let unanswered=0;
+
+    questions.slice(0,10).forEach((q,index)=>{
+        const selected=document.querySelector(
+            'input[name="question'+index+'"]:checked'
+        );
+        if(!selected){
+            unanswered++;
+        }else if(Number(selected.value)===q[2]){
+            score++;
+        }
+    });
+
+    if(unanswered>0){
+        alert("Lütfen "+unanswered+" soruyu daha cevapla.");
         return;
     }
 
-    if (Number(selected.value) === lesson.answer) {
-        result.textContent = "🎉 Harika! Doğru cevap. Konuyu tamamladın!";
-        result.style.color = "green";
+    quizSubmitted=true;
 
-        const key = currentSubject.id + "-" + currentLesson;
-        completed.add(key);
-        saveProgress();
-    } else {
-        result.textContent =
-            "Tekrar dene! Konu anlatımını yeniden okuyabilirsin.";
-        result.style.color = "#d97706";
-    }
+    const points=score*10;
+    const result=document.getElementById("quizResult");
+
+    result.style.display="block";
+    result.innerHTML=`
+        <h3>${points}/100 Puan</h3>
+        <p>${score} doğru, ${10-score} yanlış cevap.</p>
+        <p style="margin-top:8px">
+            ${points>=90?"🌟 Harika! Çok başarılısın!":
+              points>=70?"👏 Güzel iş! Biraz daha çalışarak geliştirebilirsin.":
+              points>=50?"👍 İyi başlangıç! Konuyu tekrar etmeyi deneyebilirsin.":
+              "📚 Konu anlatımını tekrar okuyup yeniden deneyebilirsin."}
+        </p>
+        <button class="action-btn" onclick="finishTopic()">
+            Konuyu Tamamla
+        </button>
+        <button class="back-btn" onclick="startQuiz()">
+            Testi Yeniden Çöz
+        </button>
+    `;
+
+    result.scrollIntoView({behavior:"smooth"});
 }
 
-function backToTopics() {
-    if (currentSubject) {
-        openSubject(currentSubject.id);
-    } else {
-        showSubjects();
-    }
+function finishTopic(){
+    const key=currentGrade+"-"+currentSubject+"-"+currentTopic;
+    completed.add(key);
+    localStorage.setItem("eduverseProgress",JSON.stringify([...completed]));
+    updateProgress();
+    openSubject(currentSubject);
 }
 
-/* BAŞLANGIÇ */
+/* BAŞLAT */
 
-renderSubjects();
+renderGrades();
 updateProgress();
 
 </script>
