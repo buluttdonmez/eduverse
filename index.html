@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduverse | Öğrenmenin Yeni Evreni</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7ff;
+            color: #18213b;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px #0000000c;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #6254dc;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #39415c;
+            margin-left: 22px;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 90px 8%;
+            text-align: center;
+            background: linear-gradient(135deg, #6254dc, #8978f5);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background: white;
+            color: #6254dc;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .courses {
+            padding: 55px 8%;
+            text-align: center;
+        }
+
+        .courses h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .course {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px #0000000b;
+        }
+
+        .course h3 {
+            color: #6254dc;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            background: #18213b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Eduverse</div>
+
+        <nav>
+            <a href="#">Ana Sayfa</a>
+            <a href="#dersler">Dersler</a>
+            <a href="#hakkinda">Hakkımızda</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Öğrenmenin Yeni Evrenine Hoş Geldin!</h1>
+
+        <p>
+            Keşfet, öğren, kendini geliştir.
+            Geleceğini Eduverse ile şekillendir.
+        </p>
+
+        <button onclick="document.getElementById('dersler').scrollIntoView({behavior:'smooth'})">
+            Dersleri Keşfet
+        </button>
+    </section>
+
+    <section class="courses" id="dersler">
+        <h2>Eğitim Dünyası</h2>
+
+        <div class="course-container">
+
+            <div class="course">
+                <h3>📚 İlkokul</h3>
+                <p>1, 2, 3 ve 4. sınıf dersleri</p>
+            </div>
+
+            <div class="course">
+                <h3>🎓 Ortaokul</h3>
+                <p>5, 6, 7 ve 8. sınıf dersleri</p>
+            </div>
+
+            <div class="course">
+                <h3>🚀 Lise</h3>
+                <p>9, 10, 11 ve 12. sınıf dersleri</p>
+            </div>
+
+            <div class="course">
+                <h3>🌍 Genel Eğitim</h3>
+                <p>Yeni bilgiler ve farklı alanlar</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="courses" id="hakkinda">
+        <h2>Eduverse Nedir?</h2>
+        <p>
+            Eduverse, herkesin istediği zaman ve yerde
+            öğrenebilmesi için tasarlanan modern bir eğitim platformudur.
+        </p>
+    </section>
+
+    <footer>
+        © 2026 Eduverse | Öğrenmenin Yeni Evreni
+    </footer>
+
+</body>
+</html>
