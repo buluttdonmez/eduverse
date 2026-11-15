@@ -1,128 +1,263 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduverse | Öğrenmenin Yeni Evreni</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduverse | Öğrenmenin Yeni Evreni</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7ff;
-            color: #18213b;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7ff;
+    color: #18213b;
+}
 
-        header {
-            background: #ffffff;
-            padding: 20px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 12px #0000000c;
-        }
+header {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px #0000000c;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-        .logo {
-            font-size: 27px;
-            font-weight: bold;
-            color: #6254dc;
-        }
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #6254dc;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #39415c;
-            margin-left: 22px;
-            font-weight: bold;
-        }
+nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
 
-        .hero {
-            padding: 90px 8%;
-            text-align: center;
-            background: linear-gradient(135deg, #6254dc, #8978f5);
-            color: white;
-        }
+nav a {
+    text-decoration: none;
+    color: #39415c;
+    font-weight: bold;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+.login-link {
+    color: #6254dc;
+    border: 2px solid #6254dc;
+    padding: 10px 16px;
+    border-radius: 9px;
+}
 
-        .hero p {
-            font-size: 19px;
-            margin-bottom: 30px;
-        }
+.register-link {
+    background: #6254dc;
+    color: white;
+    padding: 12px 17px;
+    border-radius: 9px;
+}
 
-        .hero button {
-            background: white;
-            color: #6254dc;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.hero {
+    padding: 90px 8%;
+    text-align: center;
+    background: linear-gradient(135deg, #6254dc, #8978f5);
+    color: white;
+}
 
-        .courses {
-            padding: 55px 8%;
-            text-align: center;
-        }
+.hero h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+}
 
-        .courses h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
-        }
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
 
-        .course-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
+.hero button,
+.primary-button {
+    background: white;
+    color: #6254dc;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .course {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px #0000000b;
-        }
+.courses {
+    padding: 55px 8%;
+    text-align: center;
+}
 
-        .course h3 {
-            color: #6254dc;
-            margin-bottom: 12px;
-        }
+.courses h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
 
-        footer {
-            background: #18213b;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
-    </style>
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.course {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px #0000000b;
+    transition: 0.2s;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+}
+
+.course h3 {
+    color: #6254dc;
+    margin-bottom: 12px;
+}
+
+.course p {
+    line-height: 1.5;
+}
+
+.about {
+    padding: 55px 8%;
+    text-align: center;
+    line-height: 1.7;
+}
+
+footer {
+    background: #18213b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+/* Giriş ve kayıt ekranları */
+
+.auth-section {
+    display: none;
+    min-height: 70vh;
+    padding: 60px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px #00000012;
+}
+
+.auth-box h2 {
+    color: #6254dc;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-box input,
+.auth-box select {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #d9dcef;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 14px;
+    background: #6254dc;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-box p {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.auth-box a {
+    color: #6254dc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.back-home {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #6254dc;
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    margin-top: 12px;
+    color: #6254dc;
+    font-size: 14px;
+}
+
+@media(max-width: 650px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">Eduverse</div>
+<header>
+    <div class="logo">Eduverse</div>
 
-        <nav>
-            <a href="#">Ana Sayfa</a>
-            <a href="#dersler">Dersler</a>
-            <a href="#hakkinda">Hakkımızda</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="#" onclick="showHome()">Ana Sayfa</a>
+        <a href="#dersler" onclick="showHome()">Dersler</a>
+        <a href="#hakkinda" onclick="showHome()">Hakkımızda</a>
+        <a href="#giris" class="login-link" onclick="showLogin()">Giriş Yap</a>
+        <a href="#kayit" class="register-link" onclick="showRegister()">Kayıt Ol</a>
+    </nav>
+</header>
+
+<main id="home">
 
     <section class="hero">
         <h1>Öğrenmenin Yeni Evrenine Hoş Geldin!</h1>
-
         <p>
-            Keşfet, öğren, kendini geliştir.
+            Keşfet, öğren, kendini geliştir.<br>
             Geleceğini Eduverse ile şekillendir.
         </p>
 
@@ -159,7 +294,7 @@
         </div>
     </section>
 
-    <section class="courses" id="hakkinda">
+    <section class="about" id="hakkinda">
         <h2>Eduverse Nedir?</h2>
         <p>
             Eduverse, herkesin istediği zaman ve yerde
@@ -167,9 +302,108 @@
         </p>
     </section>
 
-    <footer>
-        © 2026 Eduverse | Öğrenmenin Yeni Evreni
-    </footer>
+</main>
+
+<!-- GİRİŞ EKRANI -->
+
+<section class="auth-section" id="loginSection">
+    <div class="auth-box">
+        <h2>Eduverse'e Giriş Yap</h2>
+
+        <form onsubmit="demoLogin(event)">
+            <input type="email" placeholder="E-posta adresin" required>
+            <input type="password" placeholder="Şifren" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+
+        <p>Hesabın yok mu?
+            <a onclick="showRegister()">Kayıt Ol</a>
+        </p>
+
+        <span class="back-home" onclick="showHome()">← Ana Sayfaya Dön</span>
+        <div class="message" id="loginMessage"></div>
+    </div>
+</section>
+
+<!-- KAYIT EKRANI -->
+
+<section class="auth-section" id="registerSection">
+    <div class="auth-box">
+        <h2>Eduverse'e Kayıt Ol</h2>
+
+        <form onsubmit="demoRegister(event)">
+            <input type="text" placeholder="Adın" required>
+            <input type="text" placeholder="Soyadın" required>
+            <input type="email" placeholder="E-posta adresin" required>
+
+            <select required>
+                <option value="">Sınıfını seç</option>
+                <option>1. Sınıf</option>
+                <option>2. Sınıf</option>
+                <option>3. Sınıf</option>
+                <option>4. Sınıf</option>
+                <option>5. Sınıf</option>
+                <option>6. Sınıf</option>
+                <option>7. Sınıf</option>
+                <option>8. Sınıf</option>
+                <option>9. Sınıf</option>
+                <option>10. Sınıf</option>
+                <option>11. Sınıf</option>
+                <option>12. Sınıf</option>
+            </select>
+
+            <input type="password" placeholder="Şifre oluştur" minlength="8" required>
+
+            <button type="submit">Hesap Oluştur</button>
+        </form>
+
+        <p>Zaten hesabın var mı?
+            <a onclick="showLogin()">Giriş Yap</a>
+        </p>
+
+        <span class="back-home" onclick="showHome()">← Ana Sayfaya Dön</span>
+        <div class="message" id="registerMessage"></div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Eduverse | Öğrenmenin Yeni Evreni
+</footer>
+
+<script>
+function showHome() {
+    document.getElementById("home").style.display = "block";
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("registerSection").style.display = "none";
+    window.scrollTo(0, 0);
+}
+
+function showLogin() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("loginSection").style.display = "flex";
+    document.getElementById("registerSection").style.display = "none";
+    window.scrollTo(0, 0);
+}
+
+function showRegister() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("registerSection").style.display = "flex";
+    window.scrollTo(0, 0);
+}
+
+function demoLogin(event) {
+    event.preventDefault();
+    document.getElementById("loginMessage").textContent =
+        "Bu demo ekrandır. Gerçek giriş için Firebase bağlantısı gereklidir.";
+}
+
+function demoRegister(event) {
+    event.preventDefault();
+    document.getElementById("registerMessage").textContent =
+        "Bu demo ekrandır. Gerçek kayıt için Firebase bağlantısı gereklidir.";
+}
+</script>
 
 </body>
 </html>
